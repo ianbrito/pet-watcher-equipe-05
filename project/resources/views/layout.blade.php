@@ -18,6 +18,10 @@
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ action('PetWatcherController@home') }}">Início</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ action('EspecieController@index') }}">Espécies</a>
+                    </li>
+                </ul>
                 </div>
             </div>
         </nav>
