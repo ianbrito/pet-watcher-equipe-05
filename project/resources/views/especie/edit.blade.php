@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h3>Cadastrar nova espécie</h1>
+<h3>Cadastrar nova espécie</h3>
 
 <form action="{{ action('EspecieController@update', $especie->id) }}" method="post">
     @csrf

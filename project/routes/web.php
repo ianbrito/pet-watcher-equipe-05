@@ -1,17 +1,27 @@
 <?php
 
-Route::get('/', 'PetWatcherController@home');
+    Route::get('/', 'UserController@index');
 
-Route::get('especie', 'EspecieController@index');
+    Route::get('home', 'PetWatcherController@home');
 
-Route::get('especie/especie_{id}', 'EspecieController@show');
+    Route::get('especie', 'EspecieController@index');
 
-Route::get('especie/create', 'EspecieController@create');
+    Route::get('especie/especie_{id}', 'EspecieController@show');
 
-Route::post('especie/store', 'EspecieController@store');
+    Route::get('especie/create', 'EspecieController@create');
 
-Route::get('especie/especie_{id}/edit', 'EspecieController@edit');
+    Route::post('especie/store', 'EspecieController@store');
 
-Route::put('especie/especie_{id}', 'EspecieController@update');
+    Route::get('especie/especie_{id}/edit', 'EspecieController@edit');
 
-Route::delete('especie/especie_{id}', 'EspecieController@destroy');
+    Route::put('especie/especie_{id}', 'EspecieController@update');
+
+    Route::delete('especie/especie_{id}', 'EspecieController@destroy');
+
+    Route::get('user/edit}', 'UserController@edit');
+    Route::get('login', 'UserController@index');
+    Route::put('', 'UserController@update');
+
+    Route::get('login', 'Auth\LoginController@showLoginForm');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::get('logout', 'Auth\LoginController@logout');
