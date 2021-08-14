@@ -11,7 +11,7 @@
                     <h3>login</h3>
                     <div class="mb-3" style="margin-top: 20px">
                         <label for="exampleInputPassword1" class="form-label">Login</label>
-                        <input type="email" class="form-control" id="inputPassword1" name="email">
+                        <input type="txt" class="form-control" id="inputPassword1" name="username">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword2" class="form-label">Senha</label>

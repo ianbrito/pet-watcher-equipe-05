@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
-class PetWatcherController extends Controller {
+use App\Licenca;
+    use Illuminate\Support\Facades\Auth;
+
+    class PetWatcherController extends Controller {
 
     function home() {
-        return view('petwatcher.home');
+        $licenca = Licenca::FindOrFail('1');
+
+        if ($licenca->validade > date('Y-m-d')){
+            if (Auth::check()) return view('petwatcher.home');
+        }
+        Auth::logout();
+        return view('auth.login');
+
     }
 
 }

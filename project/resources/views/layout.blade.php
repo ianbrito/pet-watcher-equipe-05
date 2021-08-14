@@ -45,7 +45,7 @@
                             USUÁRIO:&#32;{{\Illuminate\Support\Facades\Auth::user()->name}}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{action('UserController@edit')}}">Mudar Senha</a></li>
+                            <li><a class="dropdown-item" href="{{action('UserController@edit')}}">Alterar Senha</a></li>
                             <li><a class="dropdown-item" href="{{action('Auth\LoginController@logout')}}">Logout</a></li>
                         </ul>
                     </li>
