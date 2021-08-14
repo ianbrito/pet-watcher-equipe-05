@@ -3,24 +3,42 @@
 @section('title', 'Login')
 
 @section('content')
-    <div class="container-sm">
-        <form action="{{ action('Auth\LoginController@login') }}" method="post">
-        @csrf
-            <div class="card" style="width: 400px; margin: auto; margin-top: 20px;">
-                <div class="card-body">
-                    <h3>login</h3>
-                    <div class="mb-3" style="margin-top: 20px">
-                        <label for="exampleInputPassword1" class="form-label">Login</label>
-                        <input type="txt" class="form-control" id="inputPassword1" name="username">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword2" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="inputPassword1" name="password">
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="login">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="/img/pet_watcher_logo.png" style="border: solid 1px #ffffff; border-radius: 30px;" alt="IMG">
                 </div>
+                <form action="{{ action('Auth\LoginController@login') }}" method="post" class="login100-form validate-form">
+                    @csrf
+                    <span class="login100-form-title">
+                    Login do Sistema
+                    </span>
+                    <div class="wrap-input100 validate-input">
+                        <input type="email" class="form-control input100" id="inputPassword1" name="email" placeholder="E-mail">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <input type="password" class="form-control input100" id="inputPassword1" name="password" placeholder="Senha">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <input type="submit" class="login100-form-btn" value="Entrar">
+                    </div>
+                        <div class="text-center p-t-12">
+                    </div>
+                        <div class="text-center p-t-136">
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 
 @endsection

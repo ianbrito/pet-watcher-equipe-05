@@ -12,6 +12,6 @@
                 </div>
             </div>
         @endif
-        <h1>Seja bem vindo(a) ao Pet Watcher da Equipe 05!</h1>
+        <img style="display: block; margin-left: auto; margin-right: auto; width: 40%;" src="/img/pet_watcher_logo.png">
     </div>
 @endsection
