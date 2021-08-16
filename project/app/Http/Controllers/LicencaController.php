@@ -15,6 +15,7 @@ class LicencaController extends Controller
     public function index()
     {
         //
+        return view('');
     }
 
     /**

@@ -31,6 +31,7 @@
                         if (!$licencas) {
                             Auth::logout();
                             return redirect()->back()->withInput()->withErrors('Não há licenças ativas');
+                            break;
                         }
 
                         foreach ($licencas as $lic) {
@@ -42,16 +43,20 @@
                                     Session::flash('message', 'Sua licença expira em '
                                         .$lic_date->format('d/m/Y').'. '.$interval->days.' dia(s) restantes.');
                                     return view('petwatcher.home');
+                                    break;
                                 }else{
                                     return view('petwatcher.home');
+                                    break;
                                 }
                             }
                         }
                         Auth::logout();
                         return redirect()->back()->withInput()->withErrors('Não há licenças ativas');
+                        break;
 
                     } else {
                         return redirect()->back()->withInput()->withErrors('Erro no login');
+                        break;
                     }
             }
         }

@@ -44,6 +44,11 @@
                            href="{{ action('EspecieController@index') }}">Espécies</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="{{ action('licenca@index') }}">Espécies</a>
+                    </li>
+
                 @endif
             </ul>
         </div>
