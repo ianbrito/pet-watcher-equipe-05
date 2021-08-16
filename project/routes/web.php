@@ -1,10 +1,13 @@
 <?php
 
+    use Illuminate\Support\Facades\Route;
+
+
     Route::get('/', 'UserController@index');
 
     Route::get('home', 'PetWatcherController@home');
 
-    Route::get('especie', 'EspecieController@index');
+    Route::get('especie', 'EspecieController@index')->middleware('role:3');
 
     Route::get('especie/especie_{id}', 'EspecieController@show');
 

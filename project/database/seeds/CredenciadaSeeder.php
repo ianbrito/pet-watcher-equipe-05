@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
+    use App\Credenciada;
+    use Illuminate\Database\Seeder;
 
 class CredenciadaSeeder extends Seeder
 {
@@ -12,5 +13,12 @@ class CredenciadaSeeder extends Seeder
     public function run()
     {
         //
+        Credenciada::create([
+            'cnpj' => '67.939.110/0001-94',
+            'inscricao_estadual' => '15-603528-6',
+            'razao_social' => 'Razão Social LTDA',
+            'endereco' => 'Rua Teste, 700 Santarém',
+            'user_id' => 1
+        ]);
     }
 }

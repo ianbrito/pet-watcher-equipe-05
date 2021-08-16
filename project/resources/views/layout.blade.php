@@ -32,11 +32,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                @if(auth()->check())
+
+                @if(auth()->check() && \Illuminate\Support\Facades\Auth::user()->user_type == 3 )
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                            href="{{ action('PetWatcherController@home') }}">Início</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                            href="{{ action('EspecieController@index') }}">Espécies</a>

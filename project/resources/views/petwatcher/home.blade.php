@@ -4,10 +4,10 @@
 
 @section('content')
     <div class="container-md">
-        @if(!empty(($message ?? '')))
+        @if(Session::has('message'))
             <div class="container-md" style="margin-top:20px;">
-                <div class="alert {{$message_type}} alert-dismissible row-md" role="alert" id="liveAlert">
-                    <strong>Alerta!</strong> {{$message}}
+                <div class="alert alert-warning alert-dismissible row-md" role="alert" id="liveAlert">
+                    {{Session::get('message')}}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>

@@ -53,10 +53,11 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required','string','username','max.255'],
+            'user_type' => ['require' , 'string', 'max.255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
-     */
+    }*/
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -70,6 +71,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
+            'user_type' => $data['user_type'],
             'password' => Hash::make($data['password']),
         ]);
     }

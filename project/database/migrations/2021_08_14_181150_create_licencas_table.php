@@ -15,8 +15,11 @@ class CreateLicencasTable extends Migration
     {
         Schema::create('licencas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('credenciada_id');
+            $table->string('emissao');
             $table->date('validade');
             $table->timestamps();
+            $table->foreign('credenciada_id')->references('cnpj')->on('credenciadas');
         });
     }
 

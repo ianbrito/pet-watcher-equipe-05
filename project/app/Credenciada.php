@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class credenciada extends Model
+class Credenciada extends Model
 {
     //
+    protected $table = 'credenciadas';
 }

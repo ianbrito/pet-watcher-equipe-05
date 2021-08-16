@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Especie;
 use Illuminate\Http\Request;
 
-class EspecieController extends Controller
-{
+class EspecieController extends Controller{
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
