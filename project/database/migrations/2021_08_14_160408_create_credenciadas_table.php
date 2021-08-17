@@ -14,11 +14,15 @@ class CreateCredenciadasTable extends Migration
     public function up()
     {
         Schema::create('credenciadas', function (Blueprint $table) {
-            $table->string('cnpj',30)->primary();
+            $table->bigIncrements('id');
+            $table->string('cnpj',30);
             $table->unsignedBigInteger('user_id');
             $table->string('inscricao_estadual');
             $table->string('razao_social');
+            $table->string('telefone');
+            $table->string('email');
             $table->string('endereco');
+            $table->boolean('active');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

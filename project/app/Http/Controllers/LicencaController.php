@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\licenca;
+use App\Licenca;
 use Illuminate\Http\Request;
 
 class LicencaController extends Controller
@@ -56,7 +56,7 @@ class LicencaController extends Controller
      * @param  \App\licenca  $licenca
      * @return \Illuminate\Http\Response
      */
-    public function edit(licenca $licenca)
+    public function edit(Licenca $licenca)
     {
         //
     }
@@ -68,7 +68,7 @@ class LicencaController extends Controller
      * @param  \App\licenca  $licenca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, licenca $licenca)
+    public function update(Request $request, Licenca $licenca)
     {
         //
     }
@@ -79,7 +79,7 @@ class LicencaController extends Controller
      * @param  \App\licenca  $licenca
      * @return \Illuminate\Http\Response
      */
-    public function destroy(licenca $licenca)
+    public function destroy(Licenca $licenca)
     {
         //
     }

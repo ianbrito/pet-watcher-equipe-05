@@ -26,7 +26,7 @@
                 case 2:
                     $credenciada = Credenciada::where('user_id', Auth::user()->id)->firstOrFail();
                     if (!empty($credenciada)) {
-                        $licencas = DB::select('select * from licencas where credenciada_id = ?', [$credenciada->cnpj]);
+                        $licencas = DB::select('select * from licencas where credenciada_id = ?', [$credenciada->id]);
                         //dd($licencas);
                         if (!$licencas) {
                             Auth::logout();

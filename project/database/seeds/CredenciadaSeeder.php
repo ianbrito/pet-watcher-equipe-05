@@ -17,8 +17,11 @@ class CredenciadaSeeder extends Seeder
             'cnpj' => '67.939.110/0001-94',
             'inscricao_estadual' => '15-603528-6',
             'razao_social' => 'Razão Social LTDA',
+            'telefone'=> '(93) 9200-0000',
+            'email' => 'razao_social_ltda@razaosocial.com',
             'endereco' => 'Rua Teste, 700 Santarém',
-            'user_id' => 1
+            'active' => true,
+            'user_id' => 2
         ]);
     }
 }

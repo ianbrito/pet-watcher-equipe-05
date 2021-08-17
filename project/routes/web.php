@@ -2,6 +2,15 @@
 
     use Illuminate\Support\Facades\Route;
 
+    Route::get('credenciada','CredenciadaController@index')->middleware('role:3');
+    Route::get('credenciada/credenciada_{id}/edit', 'CredenciadaController@edit')->middleware('role:3');
+    Route::get('credenciada/create', 'CredenciadaController@create')->middleware('role:3');
+    Route::post('credenciada/store', 'CredenciadaController@store')->middleware('role:3');
+    Route::get('credenciada/credenciada_{id}/password', 'CredenciadaController@editPassword')->middleware('role:3');
+    Route::put('credenciada/credenciada_{id}/password_', 'CredenciadaController@updatePassword')->middleware('role:3');
+    Route::put('credenciada/credenciada_{id}', 'CredenciadaController@update')->middleware('role:3');
+    Route::delete('credenciada/credenciada_{id}', 'CredenciadaController@destroy')->middleware('role:3');
+
 
     Route::get('/', 'UserController@index');
 
@@ -28,3 +37,5 @@
     Route::get('login', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login');
     Route::get('logout', 'Auth\LoginController@logout');
+
+
