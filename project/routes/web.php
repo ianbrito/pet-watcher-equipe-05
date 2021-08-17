@@ -12,6 +12,19 @@
     Route::delete('credenciada/credenciada_{id}', 'CredenciadaController@destroy')->middleware('role:3');
     Route::get('credenciada/credenciada_{id}', 'CredenciadaController@show')->middleware('role:3');
 
+    Route::get('user/edit}', 'UserController@edit');
+    //Route::get('login', 'UserController@index');
+    Route::put('', 'UserController@update');
+
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::get('logout', 'Auth\LoginController@logout');
+
+    Route::get('licenca', 'LicencaController@index')->middleware('role:3');
+    Route::get('licenca/create', 'LicencaController@create')->middleware('role:3');
+    Route::delete('licenca/licenca_{id}', 'LicencaController@destroy')->middleware('role:3');
+    Route::get('licenca/revogar', 'LicencaController@edit')->middleware('role:3');
+    Route::put('licenca/revogar', 'LicencaController@find')->middleware('role:3');
 
     Route::get('/', 'UserController@index');
 
@@ -31,12 +44,6 @@
 
     Route::delete('especie/especie_{id}', 'EspecieController@destroy');
 
-    Route::get('user/edit}', 'UserController@edit');
-    Route::get('login', 'UserController@index');
-    Route::put('', 'UserController@update');
 
-    Route::get('login', 'Auth\LoginController@showLoginForm');
-    Route::post('login', 'Auth\LoginController@login');
-    Route::get('logout', 'Auth\LoginController@logout');
 
 
