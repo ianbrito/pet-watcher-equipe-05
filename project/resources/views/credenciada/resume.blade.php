@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Ver Espécie')
+@section('title', 'Resumo')
 
 @section('content')
     <div class="container-sm">

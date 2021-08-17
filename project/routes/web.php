@@ -10,6 +10,7 @@
     Route::put('credenciada/credenciada_{id}/password_', 'CredenciadaController@updatePassword')->middleware('role:3');
     Route::put('credenciada/credenciada_{id}', 'CredenciadaController@update')->middleware('role:3');
     Route::delete('credenciada/credenciada_{id}', 'CredenciadaController@destroy')->middleware('role:3');
+    Route::get('credenciada/credenciada_{id}', 'CredenciadaController@show')->middleware('role:3');
 
 
     Route::get('/', 'UserController@index');

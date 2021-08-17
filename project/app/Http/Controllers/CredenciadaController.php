@@ -100,9 +100,10 @@
          * @param \App\credenciada $credenciada
          * @return \Illuminate\Http\Response
          */
-        public function show(Credenciada $credenciada)
+        public function show($id)
         {
-            //
+            $credenciada = Credenciada::findOrFail($id);
+            return view('credenciada.show', compact('credenciada'));
         }
 
         /**
@@ -145,9 +146,7 @@
                 'razao_social' => 'required',
                 'telefone' => 'required',
                 'email' => 'required|email',
-                'endereco' => 'required',
-                'name' => 'required',
-                'email_gestor' => 'required'];
+                'endereco' => 'required'];
 
             $this->validate($request, $rules);
 
