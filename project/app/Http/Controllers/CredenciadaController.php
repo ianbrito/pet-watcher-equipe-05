@@ -53,7 +53,7 @@
                 'inscricao_estadual' => 'required',
                 'razao_social' => 'required',
                 'telefone' => 'required',
-                'email' => 'required|email',
+                'email' => 'required',
                 'endereco' => 'required',
                 'name' => 'required',
                 'email_gestor' => 'required'];
@@ -70,7 +70,6 @@
 
             $credenciada = new Credenciada();
             $credenciada->cnpj = $request->cnpj;
-            $credenciada->user_id = $user->id;
             $credenciada->inscricao_estadual = $request->inscricao_estadual;
             $credenciada->razao_social = $request->razao_social;
             $credenciada->telefone = $request->telefone;
@@ -80,14 +79,16 @@
 
             try {
                 DB::beginTransaction();
-                if ($user->save())
-                    $user->refresh();
+                $user->save();
+                $user->refresh();
+
+                $credenciada->user_id = $user->id;
                 $credenciada->save();
                 DB::commit();
 
             } catch (QueryException $exception) {
                 DB::rollBack();
-                Session::flash('message', 'Ocorreu um erro ao salvar os dados');
+                Session::flash('message', ''.$exception);
                 Session::flash('type', 'alert-danger');
                 return redirect()->back();
             }
