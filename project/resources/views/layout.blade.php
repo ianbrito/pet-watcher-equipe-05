@@ -56,12 +56,12 @@
                         <a class="nav-link active" aria-current="page"
                            href="{{action('CredenciadaController@index')}}">Credenciadas</a>
                     </li>
-                    <!--
 
-                       <li class="nav-item">
-                           <a class="nav-link active" aria-current="page"
-                              href="">Espécies</a>
-                       </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                           href="{{action('LicencaController@index')}}">Licenças</a>
+                    </li>
+
 
                 @endif
             </ul>

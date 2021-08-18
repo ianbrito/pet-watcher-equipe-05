@@ -1,86 +1,119 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use App\Licenca;
-use Illuminate\Http\Request;
+    use App\Credenciada;
+    use App\Licenca;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\DB;
 
-class LicencaController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    class LicencaController extends Controller
     {
-        //
-        return view('');
-    }
+        /**
+         * Display a listing of the resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function index()
+        {
+            $licencas = Licenca::all();
+            for ($i = 0; $i < $licencas->count(); $i++) {
+                $licencas[$i]->credenciada = Credenciada::where('id', $licencas[$i]->credenciada_id)->firstOrFail();
+            }
+            //dd($licencas);
+            return view('licenca.index', compact('licencas'));
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        /**
+         * Show the form for creating a new resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function create()
+        {
+            return view('licenca.create');
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        /**
+         * Store a newly created resource in storage.
+         *
+         * @param \Illuminate\Http\Request $request
+         * @return \Illuminate\Http\Response
+         */
+        public function store(Request $request)
+        {
+            //
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\licenca  $licenca
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return licenca::findOrFail($id);
-    }
+        /**
+         * Display the specified resource.
+         *
+         * @param \App\Licenca $Licenca
+         * @return \Illuminate\Http\Response
+         */
+        public function show($id)
+        {
+            return Licenca::findOrFail($id);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\licenca  $licenca
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Licenca $licenca)
-    {
-        //
-    }
+        /**
+         * Show the form for editing the specified resource.
+         *
+         * @param \App\Licenca $Licenca
+         * @return \Illuminate\Http\Response
+         */
+        public function edit()
+        {
+            return view('licenca.edit');
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\licenca  $licenca
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Licenca $licenca)
-    {
-        //
-    }
+        /**
+         * Update the specified resource in storage.
+         *
+         * @param \Illuminate\Http\Request $request
+         * @param \App\Licenca $Licenca
+         * @return \Illuminate\Http\Response
+         */
+        public function update(Request $request, Licenca $Licenca)
+        {
+            //
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\licenca  $licenca
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Licenca $licenca)
-    {
-        //
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param  $id
+         * @return \Illuminate\Http\Response
+         */
+        public function destroy($id)
+        {
+            $licenca = Licenca::findOrFail($id);
+            if ($licenca->active) {
+                $licenca->active = false;
+            } else {
+                $licenca->active = true;
+            }
+            $licenca->save();
+            return redirect('licenca');
+        }
+
+        /**
+         * Remove the specified resource from storage.
+         *
+         * @param Request $request
+         * @return \Illuminate\Http\Response
+         */
+        public function find(Request $request)
+        {
+            $licencas = DB::select('select * from licencas where validade > date(now()) and credenciada_id = (select id from credenciadas where cnpj = ?)', [$request->cnpj]);
+            for ($i = 0; $i < count($licencas); $i++) {
+                $licencas[$i]->credenciada = Credenciada::where('id', $licencas[$i]->credenciada_id)->firstOrFail();
+            }
+            return view('licenca.edit', compact('licencas'));
+        }
+
+        public function findCredenciada(Request $request){
+            $credenciada =  Credenciada::where('cnpj',$request->cnpj);
+            return view('licenca.edit', compact('credenciada'));
+        }
     }
-}
