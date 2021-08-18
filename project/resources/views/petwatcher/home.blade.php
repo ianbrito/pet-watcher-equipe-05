@@ -58,6 +58,12 @@
                     </div>
                     <div class="action-pic container-login100-form-btn">
                         <a class="button-action-home"
+                           href="{{action('LicencaController@index')}}">
+                            Gerenciamento de Licenças
+                        </a>
+                    </div>
+                    <div class="action-pic container-login100-form-btn">
+                        <a class="button-action-home"
                            href="#">
                             Gerenciamento de Funcionários
                         </a>

@@ -25,7 +25,7 @@
     Route::delete('licenca/licenca_{id}', 'LicencaController@destroy')->middleware('role:3');
     Route::get('licenca/revogar', 'LicencaController@edit')->middleware('role:3');
     Route::put('licenca/revogar', 'LicencaController@find')->middleware('role:3');
-    Route::put('licenca/store', 'LicencaController@store')->middleware('role:3');
+    Route::post('licenca/store', 'LicencaController@store')->middleware('role:3');
 
     Route::get('/', 'UserController@index');
 
