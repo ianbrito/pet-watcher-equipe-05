@@ -176,6 +176,11 @@ iframe{
     margin:0 auto
 }
 
+.limiter-default{
+    width:1600px;
+    margin:0 auto
+}
+
 .container-login100{
     width:auto;
     display:-webkit-box;
@@ -200,6 +205,32 @@ iframe{
     align-items:center;
     margin-top: 50px;
     padding:15px;
+}
+
+.container-insert100 {
+    width:auto;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 150px;
+    padding:15px;
+}
+
+.container-view100 {
+    width:auto;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 150px;
+
 }
 
 .wrap-login100{
@@ -230,6 +261,36 @@ iframe{
     flex-wrap:wrap;
     justify-content: center;
     padding:40px 130px 40px 130px;
+}
+
+.wrap-new-entry100 {
+    width:800px;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    padding:120px 130px 0 130px;
+}
+
+.wrap-view100 {
+    width:800px;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    padding: 80px 130px 80px 130px;
 }
 
 .button-action-home {
@@ -315,6 +376,10 @@ iframe{
 
 .login100-form{
     width:290px
+}
+
+.nwe100-form {
+    width:390px;
 }
 
 .login100-form-title{
