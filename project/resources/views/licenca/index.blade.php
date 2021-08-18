@@ -1,5 +1,5 @@
 @extends('layout')
-
+@section('extra_css', '/css/table.css')
 @section('title', 'Credenciadas')
 
 @section('content')
@@ -25,11 +25,12 @@
     <div class="container-sm">
 
         <table class="table table-bordered align-middle">
+
             <tr>
                 <th scope="row">id</th>
                 <th>Estabelecimento</th>
-                <th>Emissão</th>
-                <th>Validade</th>
+                <th>Data de licenciamento</th>
+                <th>Data de vencimento</th>
                 <th>Status da Licença</th>
             </tr>
             @foreach( $licencas as $licenca)

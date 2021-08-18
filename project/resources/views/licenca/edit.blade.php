@@ -44,8 +44,8 @@
                     <tr>
                         <th scope="row">id</th>
                         <th>Estabelecimento</th>
-                        <th>Emissão</th>
-                        <th>Validade</th>
+                        <th>Data de licenciamento</th>
+                        <th>Data de vencimento</th>
                         <th>Status da Licença</th>
                     </tr>
 
@@ -70,9 +70,16 @@
 
                                 </td>
                             </tr>
+
                         @endforeach
+                    @else
+                        <div>
+                            Nenhuma licença encontrada
+                        </div>
                     @endif
                 </table>
+                <a class="btn btn-primary" role="button"
+                   href="{{action('LicencaController@index')}}">Voltar</a>
             </div>
         </div>
     </div>

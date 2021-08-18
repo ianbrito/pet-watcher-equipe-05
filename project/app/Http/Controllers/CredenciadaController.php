@@ -60,6 +60,14 @@
 
             $this->validate($request, $rules);
 
+            $exists = Credenciada::where('cnpj',$request->cnpj)->firstOrFail();
+            if(empty($exists)){
+                Session::flash('message', 'CNPJ já cadastrado');
+                Session::flash('type', 'alert-danger');
+                return redirect()->back();
+            }
+
+
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email_gestor;

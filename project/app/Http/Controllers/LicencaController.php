@@ -6,6 +6,7 @@
     use App\Licenca;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Session;
 
     class LicencaController extends Controller
     {
@@ -42,7 +43,22 @@
          */
         public function store(Request $request)
         {
-            //
+            $licenca = new Licenca();
+            $licenca->emissao = $request->emissao;
+            $licenca->validade =  $request->validade;
+            $licenca->active = true;
+
+            $credenciada = DB::select('select * from credenciadas where cnpj = ?',[$request->cnpj]);
+            //dd($credenciada);
+            if(empty($credenciada)){
+                Session::flash('message', 'CNPJ não encontrado');
+                Session::flash('type', 'alert-danger');
+                return redirect()->back();
+            }
+            $licenca->credenciada_id = $credenciada[0]->id;
+            $licenca->save();
+
+            return redirect('licenca');
         }
 
         /**
@@ -114,6 +130,6 @@
 
         public function findCredenciada(Request $request){
             $credenciada =  Credenciada::where('cnpj',$request->cnpj);
-            return view('licenca.edit', compact('credenciada'));
+            return view('licenca.create', compact('credenciada'));
         }
     }

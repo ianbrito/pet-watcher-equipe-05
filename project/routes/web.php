@@ -20,12 +20,14 @@
     Route::post('login', 'Auth\LoginController@login');
     Route::get('logout', 'Auth\LoginController@logout');
 
-    Route::get('licenca', 'LicencaController@index')->middleware('role:3');
+    Route::get('licenca', 'LicencaController@index')->middleware('role:3')->name('licenca.index');
     Route::get('licenca/create', 'LicencaController@create')->middleware('role:3');
     Route::delete('licenca/licenca_{id}', 'LicencaController@destroy')->middleware('role:3');
     Route::get('licenca/revogar', 'LicencaController@edit')->middleware('role:3');
     Route::put('licenca/revogar', 'LicencaController@find')->middleware('role:3');
-    Route::post('licenca/store', 'LicencaController@store')->middleware('role:3');
+    Route::post('licenca/create', 'LicencaController@store')->middleware('role:3');
+    //Route::post('licenca/create', 'LicencaController@findCredenciada')->middleware('role:3');
+
 
     Route::get('/', 'UserController@index');
 

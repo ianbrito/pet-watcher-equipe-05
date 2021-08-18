@@ -36,13 +36,15 @@
 
                         foreach ($licencas as $lic) {
                             if ($lic->active == 1 ){
-                                $lic_date = new \DateTime($lic->validade);
+                                $licenca_validade = new \DateTime($lic->validade);
+                                $licenca_emissao = new \DateTime($lic->emissao);
+
                                 $current_date = new \DateTime(date('Y-m-d'));
-                                if ($lic_date > $current_date) {
-                                    $interval = $lic_date->diff($current_date);
+                                if ($licenca_validade >= $current_date && $licenca_emissao <= $current_date) {
+                                    $interval = $licenca_validade->diff($current_date);
                                     if ($interval->days < 15) {
                                         Session::flash('message', 'Sua licença expira em '
-                                            .$lic_date->format('d/m/Y').'. '.$interval->days.' dia(s) restantes.');
+                                            .$licenca_validade->format('d/m/Y').'. '.$interval->days.' dia(s) restantes.');
                                         return view('petwatcher.home');
                                         break;
                                     }else{
