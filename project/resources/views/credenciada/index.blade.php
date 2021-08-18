@@ -1,4 +1,5 @@
 @extends('layout')
+@section('extra_css', '/css/table.css')
 
 @section('title', 'Credenciadas')
 
@@ -12,67 +13,55 @@
                 </div>
             </div>
         @endif
-        <div style="margin-top: 20px;margin-bottom: 20px;">
-            <a href="{{ action('CredenciadaController@create') }}">
-                <button class="btn btn-primary">Cadastrar novo estabelecimento</button>
-            </a>
+
+    </div>
+    <div class="limiter-table">
+        <div class="container-table100">
+            <div class="container-button-table-page">
+                <a href="{{ action('CredenciadaController@create') }}">
+                    <button class="button-table-page">Cadastrar novo estabelecimento</button>
+                </a>
+            </div>
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead class="table100-head">
+                            <tr>
+                                <th scope="row" class="column_id">ID</th>
+                                <th class="column_cnpj">CNPJ</th>
+                                <th class="column_ie">Inscrição Estadual</th>
+                                <th class="column_razao">Razão Social</th>
+                                <th class="column_email">E-mail</th>
+                                <th class="column_tel">Telefone</th>
+                                <th class="column_address">Endereço</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach( $credenciadas as $credenciada)
+                                <tr class='clickable-row' data-href='/credenciada/credenciada_{{ $credenciada->id }}'>
+                                    <td class="column_id"><a>{{ $credenciada->id }}</a></td>
+                                    <td class="column_cnpj"> {{ $credenciada->cnpj  }} </td>
+                                    <td class="column_ie"> {{ $credenciada->inscricao_estadual }} </td>
+                                    <td class="column_razao"> {{ $credenciada->razao_social }} </td>
+                                    <td class="column_email"> {{ $credenciada->email }} </td>
+                                    <td class="column_tel"> {{ $credenciada->telefone }} </td>
+                                    <td class="column_address"> {{ $credenciada->endereco }} </td>
+                                </tr>
+
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="container-xxl" style="max-width: 1700px;">
 
-        <table class="table table-bordered align-middle">
-            <tr>
-                <th scope="row">id</th>
-                <th>CNPJ</th>
-                <th>Inscrição Estadual</th>
-                <th>Razão Social</th>
-                <th>Telefone</th>
-                <th>E-mail</th>
-                <th>Endereço</th>
-                <th colspan="3">Ações</th>
-            </tr>
-            @foreach( $credenciadas as $credenciada)
-
-                <tr>
-                    <td><a href="/credenciada/credenciada_{{ $credenciada->id }}">{{ $credenciada->id }}</a></td>
-                    <td> {{ $credenciada->cnpj  }} </td>
-                    <td> {{ $credenciada->inscricao_estadual }} </td>
-                    <td> {{ $credenciada->razao_social }} </td>
-                    <td> {{ $credenciada->telefone }} </td>
-                    <td> {{ $credenciada->email }} </td>
-                    <td> {{ $credenciada->endereco }} </td>
-                    <td><a
-                           href="/credenciada/credenciada_{{ $credenciada->id }}/edit">Editar</a></td>
-                    <td><a
-                           href="/credenciada/credenciada_{{ $credenciada->id }}/password">Trocar senha</a></td>
-                    <td>
-                        @if($credenciada->active)
-                            <form action="{{ action('CredenciadaController@destroy', $credenciada->id) }}" method="post"
-                                  onsubmit="return confirm('Você deseja desabilitar este registro (&quot;{{ $credenciada->razao_social }}&quot;) do sistema?')">
-                                @csrf
-                                {{ method_field('delete') }}
-                                <input class="btn btn-primary" type="submit" value="desabilitar">
-                            </form>
-                        @else
-                            <form action="{{ action('CredenciadaController@destroy', $credenciada->id) }}" method="post"
-                                  onsubmit="return confirm('Você deseja ativar este registro (&quot;{{ $credenciada->razao_social }}&quot;) do sistema?')">
-                                @csrf
-                                {{ method_field('delete') }}
-                                <input class="btn btn-primary" type="submit" value="ativar">
-                            </form>
-                        @endif
-                    </td>
-                </tr>
-
-            @endforeach
-
-        </table>
-
-    </div>
-
-
-
-
-
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").click(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
 
 @endsection

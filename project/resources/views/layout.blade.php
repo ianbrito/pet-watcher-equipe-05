@@ -2,6 +2,8 @@
 <html lang="pt-br">
 <head>
     <title>Pet Watcher - @yield('title')</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
@@ -21,8 +23,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css"
           integrity="sha512-+mlclc5Q/eHs49oIOCxnnENudJWuNqX5AogCiqRBgKnpoplPzETg2fkgBFVC6WYUVxYYljuxPNG8RE7yBy1K+g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v1/css/util.css">
-    <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v1/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.2/css/perfect-scrollbar.css"
+          integrity="sha512-2xznCEl5y5T5huJ2hCmwhvVtIGVF1j/aNUEJwi/BzpWPKEzsZPGpwnP1JrIMmjPpQaVicWOYVu8QvAIg9hwv9w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href=@yield('extra_css')>
 </head>
 
 <body>
@@ -30,7 +39,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-md">
         <a class="navbar-brand">
-            Pet Watcher
+            <img src="/img/pw_topbar_icon.png" alt="Pet Watcher Logo"
+                 width="32" height="32" class="d-inline-block align-text-top">
+             Pet Watcher
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
@@ -40,7 +51,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                @if(auth()->check() && \Illuminate\Support\Facades\Auth::user()->user_type == 3 )
+                @if(auth()->check() && \Illuminate\Support\Facades\Auth::user()->user_type == 3 && request()->is('especie') || request()->is('credenciada'))
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                            href="{{ action('PetWatcherController@home') }}">Início</a>
@@ -56,12 +67,6 @@
                         <a class="nav-link active" aria-current="page"
                            href="{{action('CredenciadaController@index')}}">Credenciadas</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                           href="{{action('LicencaController@index')}}">Licenças</a>
-                    </li>
-
 
                 @endif
             </ul>

@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
-    <div class="limiter">
+    <div class="limiter-login">
         <div class="container-login100">
             <div class="wrap-login100">
                 @if($errors->all())
@@ -25,7 +25,7 @@
                     </span>
                     <div class="wrap-input100 validate-input">
                         <input type="text" class="form-control input100" id="inputPassword1" name="username"
-                               placeholder="login">
+                               placeholder="Login">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
