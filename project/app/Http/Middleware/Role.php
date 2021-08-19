@@ -10,7 +10,7 @@
         public function handle($request, Closure $next, $role)
         {
             if (!Auth::check()){
-                return redirect('auth.login');
+                return redirect('login');
             }
 
             $user = Auth::user();
