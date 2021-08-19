@@ -125,7 +125,7 @@
             for ($i = 0; $i < count($licencas); $i++) {
                 $licencas[$i]->credenciada = Credenciada::where('id', $licencas[$i]->credenciada_id)->firstOrFail();
             }
-            return view('licenca.edit', compact('licencas'));
+            return view('licenca.resultado', compact('licencas'));
         }
 
         public function findCredenciada(Request $request){

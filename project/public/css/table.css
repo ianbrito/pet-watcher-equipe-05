@@ -90,7 +90,28 @@ body {
     text-transform:uppercase;
     height:50px;
     border-radius:30px;
-    background: #b84646;
+    background: #fd2c2c;
+    display:flex;
+    align-items:center;
+    padding:0 10px;
+    -webkit-transition:all .4s;
+    -o-transition:all .4s;
+    -moz-transition:all .4s;
+    transition:all .4s
+}
+
+.status-disabled {
+    width:100%;
+    min-height:5vh;
+    font-family: Montserrat, sans-serif;
+    justify-content:center;
+    font-size:15px;
+    line-height:1.5;
+    color:#fff;
+    text-transform:uppercase;
+    height:50px;
+    border-radius:30px;
+    background: #646160;
     display:flex;
     align-items:center;
     padding:0 10px;
