@@ -12,40 +12,54 @@
                 </div>
             </div>
         @endif
-        <div style="margin-top: 20px;margin-bottom: 20px;">
-            <a href="{{ action('LicencaController@create') }}">
-                <button class="btn btn-primary">Cadastrar uma Licença</button>
-            </a>
-            <a href="{{ action('LicencaController@edit') }}">
-                <button class="btn btn-primary">Revogar uma Licença</button>
-            </a>
-        </div>
-
     </div>
-    <div class="container-sm">
 
-        <table class="table table-bordered align-middle">
+    <div class="limiter-table">
+        <div class="container-table100">
+            <div class="container-button-table-page">
+                <a href="{{ action('LicencaController@create') }}">
+                    <button class="button-table-page">Cadastrar uma Licença</button>
+                </a>
+                <a href="{{ action('LicencaController@edit') }}">
+                    <button class="button-table-page">Revogar uma Licença</button>
+                </a>
+            </div>
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead class="table100-head">
+                            <tr>
+                                <th scope="row" class="column_id">ID</th>
+                                <th class="column_cnpj">Estabelecimento</th>
+                                <th class="column_ie">Data de licenciamento</th>
+                                <th class="column_ie">Data de vencimento</th>
+                                <th class="column_id">Status da Licença</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-            <tr>
-                <th scope="row">id</th>
-                <th>Estabelecimento</th>
-                <th>Data de licenciamento</th>
-                <th>Data de vencimento</th>
-                <th>Status da Licença</th>
-            </tr>
-            @foreach( $licencas as $licenca)
+                        @foreach( $licencas as $licenca)
+                            <tr>
+                                <td class="column_id"> {{ $licenca->id }} </td>
+                                <td class="column_cnpj"> {{$licenca->credenciada->cnpj}} </td>
+                                <td class="column_ie"> {{ $licenca->emissao }} </td>
+                                <td class="column_ie"> {{ $licenca->validade }} </td>
+                                <td class="column_id">
+                                    @if($licenca->active == 1)
+                                        <button class="status-valid">Ativa</button>
+                                    @else
+                                        <button class="status-invalid">Revogada</button>
 
-                <tr>
-                    <td> {{ $licenca->id }} </td>
-                    <td> {{$licenca->credenciada->cnpj}} </td>
-                    <td> {{ $licenca->emissao }} </td>
-                    <td> {{ $licenca->validade }} </td>
-                    <td> @if($licenca->active == 1) Ativa @else revogada @endif</td>
-                </tr>
+                                    @endif
+                                </td>
+                            </tr>
 
-            @endforeach
-
-        </table>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

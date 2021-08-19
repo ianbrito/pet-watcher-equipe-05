@@ -13,8 +13,8 @@
                 </div>
             </div>
         @endif
-
     </div>
+
     <div class="limiter-table">
         <div class="container-table100">
             <div class="container-button-table-page">
