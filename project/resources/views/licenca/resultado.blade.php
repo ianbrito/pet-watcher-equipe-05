@@ -1,6 +1,6 @@
 @extends('layout')
 @section('extra_css', '/css/table.css')
-@section('title', 'Credenciadas')
+@section('title', 'Revogar licença')
 
 @section('content')
     <div class="container-lg">
@@ -17,28 +17,24 @@
     <div class="limiter-table">
         <div class="container-table100">
             <div class="container-button-table-page">
-                <a href="{{ action('LicencaController@create') }}">
-                    <button class="button-table-page">Cadastrar uma Licença</button>
-                </a>
                 <a href="{{ action('LicencaController@edit') }}">
-                    <button class="button-table-page">Revogar uma Licença</button>
+                    <button class="button-table-view">Voltar</button>
                 </a>
             </div>
             <div class="wrap-table100">
                 <div class="table100">
                     <table>
                         <thead class="table100-head">
-                            <tr>
-                                <th scope="row" class="column_id">ID</th>
-                                <th class="column_cnpj">Estabelecimento</th>
-                                <th class="column_ie">Data de licenciamento</th>
-                                <th class="column_ie">Data de vencimento</th>
-                                <th class="column_id">Status da Licença</th>
-                            </tr>
+                        <tr>
+                            <th scope="row" class="column_id">ID</th>
+                            <th class="column_cnpj">Estabelecimento</th>
+                            <th class="column_ie">Data de licenciamento</th>
+                            <th class="column_ie">Data de vencimento</th>
+                            <th class="column_id">Status da Licença</th>
+                        </tr>
                         </thead>
                         <tbody>
-
-                        @foreach( $licencas as $licenca)
+                        @foreach($licencas as $licenca)
                             <tr>
                                 <td class="column_id"> {{ $licenca->id }} </td>
                                 <td class="column_cnpj"> {{$licenca->credenciada->cnpj}} </td>
@@ -46,14 +42,18 @@
                                 <td class="column_ie"> {{ $licenca->validade }} </td>
                                 <td class="column_id">
                                     @if($licenca->active == 1)
-                                        <button class="status-valid">Ativa</button>
+                                        <form action="{{ action('LicencaController@destroy', $licenca->id) }}"
+                                              method="post"
+                                              onsubmit="return confirm('Você deseja revogar a licença selecionada do sistema?')">
+                                            @csrf
+                                            {{ method_field('delete') }}
+                                            <button class="status-invalid">Revogar licença</button>
+                                        </form>
                                     @else
-                                        <button class="status-invalid">Revogada</button>
-
+                                        <button class="status-disabled">Revogada</button>
                                     @endif
                                 </td>
                             </tr>
-
                         @endforeach
                         </tbody>
                     </table>

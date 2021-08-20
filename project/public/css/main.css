@@ -220,6 +220,19 @@ iframe{
     padding:15px;
 }
 
+.container-insert200 {
+    width:auto;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 80px;
+    padding:15px;
+}
+
 .container-view100 {
     width:auto;
     display:-webkit-box;
@@ -264,6 +277,21 @@ iframe{
 }
 
 .wrap-new-entry100 {
+    width:800px;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    padding:120px 130px 0 130px;
+}
+
+.wrap-new-entry-lic {
     width:800px;
     background:#fff;
     border-radius:20px;
