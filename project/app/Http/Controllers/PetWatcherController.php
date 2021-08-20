@@ -20,6 +20,11 @@
             }
 
             switch (Auth::user()->user_type) {
+                case 1:
+                    return view('petwatcher.home');
+                    break;
+
+
                 case 3:
                     return view('petwatcher.home');
                     break;
@@ -35,7 +40,7 @@
                         }
 
                         foreach ($licencas as $lic) {
-                            if ($lic->active == 1 ){
+                            if ($lic->active == 1) {
                                 $licenca_validade = new \DateTime($lic->validade);
                                 $licenca_emissao = new \DateTime($lic->emissao);
 
@@ -44,10 +49,10 @@
                                     $interval = $licenca_validade->diff($current_date);
                                     if ($interval->days < 15) {
                                         Session::flash('message', 'Sua licença expira em '
-                                            .$licenca_validade->format('d/m/Y').'. '.$interval->days.' dia(s) restantes.');
+                                            . $licenca_validade->format('d/m/Y') . '. ' . $interval->days . ' dia(s) restantes.');
                                         return view('petwatcher.home');
                                         break;
-                                    }else{
+                                    } else {
                                         return view('petwatcher.home');
                                         break;
                                     }
@@ -62,6 +67,7 @@
                         return redirect()->back()->withInput()->withErrors('Erro no login');
                         break;
                     }
+
             }
         }
     }
