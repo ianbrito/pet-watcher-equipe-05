@@ -60,8 +60,8 @@
 
             $this->validate($request, $rules);
 
-            $exists = Credenciada::where('cnpj',$request->cnpj)->firstOrFail();
-            if(empty($exists)){
+            $exists = DB::select('select * from credenciadas where cnpj = ?',[$request->cnpj]);
+            if(!empty($exists)){
                 Session::flash('message', 'CNPJ já cadastrado');
                 Session::flash('type', 'alert-danger');
                 return redirect()->back();
@@ -96,7 +96,7 @@
 
             } catch (QueryException $exception) {
                 DB::rollBack();
-                Session::flash('message', ''.$exception);
+                Session::flash('message', 'Ocorreu um erro ao salva os dados');
                 Session::flash('type', 'alert-danger');
                 return redirect()->back();
             }
