@@ -60,8 +60,8 @@
 
             $this->validate($request, $rules);
 
-            $exists = DB::select('select * from credenciadas where cnpj = ?',[$request->cnpj]);
-            if(!empty($exists)){
+            //$exists = DB::select('select * from credenciadas where cnpj = ?',[$request->cnpj]);
+            if(Credenciada::where('cnpj',$request->cnpj)->exists()){
                 Session::flash('message', 'CNPJ já cadastrado');
                 Session::flash('type', 'alert-danger');
                 return redirect()->back()->withInput();
