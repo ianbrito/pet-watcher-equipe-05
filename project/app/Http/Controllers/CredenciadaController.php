@@ -64,7 +64,7 @@
             if(!empty($exists)){
                 Session::flash('message', 'CNPJ já cadastrado');
                 Session::flash('type', 'alert-danger');
-                return redirect()->back();
+                return redirect()->back()->withInput();
             }
 
 
