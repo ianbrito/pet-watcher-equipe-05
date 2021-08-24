@@ -181,6 +181,11 @@ iframe{
     margin:0 auto
 }
 
+.limiter-credential{
+    width:1200px;
+    margin:20px auto;
+}
+
 .container-login100{
     width:auto;
     display:-webkit-box;
@@ -231,6 +236,14 @@ iframe{
     align-items:center;
     margin-top: 80px;
     padding:15px;
+}
+
+.container-insert300 {
+    width:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding: 5px 5px;
 }
 
 .container-view100 {
@@ -304,6 +317,17 @@ iframe{
     flex-wrap:wrap;
     justify-content: center;
     padding:120px 130px 0 130px;
+}
+
+.wrap-new-entry-lic2 {
+    width:800px;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    display: inline-flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    padding:70px 130px 0 130px;
 }
 
 .wrap-view100 {
@@ -644,6 +668,51 @@ iframe{
         visibility:visible;
         opacity:1
     }
+}
+
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }
 
 

@@ -19,75 +19,100 @@
             </div>
         @endforeach
     @endif
-    <div class="container-sm">
 
+    <div class="limiter-credential">
+        <div class="container-insert300">
+            <div class="wrap-new-entry-lic2">
+                <form action="{{ action('CredenciadaController@store') }}" method="post">
+                    @csrf
+                    <span class="home100-form-title">
+                        Cadastrar novo estabelecimento
+                    </span>
 
-        <form action="{{ action('CredenciadaController@store') }}" method="post">
-            @csrf
-            <div class="card" style="margin-top: 20px;">
-                <div class="card-body">
-                    <h2 style="margin-bottom: 20px">Cadastrar novo estabelecimento</h2>
-
-                    <div class="row">
-                        <div class="col">
-                            <label for="cnpj" class="form-label">CNPJ: </label>
-                            <input type="text" class="form-control" name="cnpj" id="cnpj" value="{{ old('cnpj') }}">
-                        </div>
-
-                        <div class="col">
-                            <label for="inscricao_estadual" class="form-label">Inscrição Estadual: </label>
-                            <input type="text" class="form-control" name="inscricao_estadual" id="inscricao_estadual"
-                                   value="{{ old('inscricao_estadual') }}">
-                        </div>
+                    <!-- Dados do Estabelecimento -->
+                    <h3 style="font-family: Poppins, sans-serif; font-size: 22px; margin-bottom: 10px; margin-top: 10px">Dados do Estabelecimento</h3>
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="CNPJ" name="cnpj" id="cnpj" value="{{ old('cnpj') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-address-card" aria-hidden="true"></i>
+                        </span>
                     </div>
 
-                    <div class="mb-3" style="margin-top: 20px">
-                        <label for="razao_social" class="form-label">Razão Social: </label>
-                        <input type="text" class="form-control" name="razao_social" id="razao_social"
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="Inscrição Estadual" name="inscricao_estadual" id="inscricao_estadual"
+                               value="{{ old('inscricao_estadual') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-info-circle" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100" style="margin-top: 20px">
+                        <input type="text" class="form-control input100" placeholder="Razão Social" name="razao_social" id="razao_social"
                                value="{{ old('razao_social') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="telefone" class="form-label">Telefone: </label>
-                        <input type="text" class="form-control" name="telefone" id="telefone"
+
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="Telefone" name="telefone" id="telefone"
                                value="{{ old('telefone') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail do estabelecimento: </label>
-                        <div class="input-group flex-nowrap">
-                            <span class="input-group-text" id="addon-wrapping">@</span>
-                            <input type="text" class="form-control" name="email" id="email" value="{{ old('email') }}">
-                        </div>
+
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="E-mail" name="email" id="email" value="{{ old('email') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-at" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="endereco" class="form-label">endereço: </label>
-                        <input type="text" class="form-control" name="endereco" id="endereco"
+
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="Endereço" name="endereco" id="endereco"
                                value="{{ old('endereco') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </span>
                     </div>
 
-                    <h3 style="margin-bottom: 20px">Informações do Gestor</h3>
+                    <!-- Dados do Gestor -->
+                    <h3 style="font-family: Poppins, sans-serif; font-size: 22px; margin-bottom: 10px; margin-top: 10px">Dados do Gestor</h3>
 
-                    <div class="mb-3" style="margin-top: 20px">
-                        <label for="especie" class="form-label">Nome: </label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="Nome" name="name" id="name" value="{{ old('name') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="especie" class="form-label">E-mail do Gestor: </label>
-                        <div class="input-group flex-nowrap">
-                            <span class="input-group-text" id="addon-wrapping">@</span>
-                            <input type="text" class="form-control" name="email_gestor" id="email_gestor"
-                                   value="{{ old('cnpj') }}">
-                        </div>
+
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="E-mail" name="email_gestor" id="email_gestor"
+                               value="{{ old('cnpj') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-at" aria-hidden="true"></i>
+                        </span>
                     </div>
-                </div>
+                    <div class="container-login100-form-btn">
+                        <input type="submit" class="login100-form-btn" value="Cadastrar">
+                    </div>
+                    <div class="text-center p-t-12">
+                    </div>
+                    <div class="text-center p-t-136">
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </div>
+                </form>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="mb-3">
-                        <input type="submit" class="btn btn-primary" value="Cadastrar">
-                    </div>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 
 @endsection

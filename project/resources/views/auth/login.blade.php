@@ -6,13 +6,13 @@
     <div class="limiter-login">
         <div class="container-login100">
             <div class="wrap-login100">
-                @if($errors->all())
-                    @foreach($errors->all() as $error)
-                        <div>
+                <div>
+                    @if($errors->all())
+                        @foreach ($errors->all() as $error)
                             {{$error}}
-                        </div>
-                    @endforeach
-                @endif
+                        @endforeach
+                    @endif
+                </div>
                 <div class="login100-pic js-tilt" data-tilt>
                     <img src="/img/pet_watcher_logo.png" style="border: solid 1px #ffffff; border-radius: 30px;"
                          alt="IMG">
