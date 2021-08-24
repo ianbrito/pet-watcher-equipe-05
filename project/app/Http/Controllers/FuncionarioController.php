@@ -21,7 +21,7 @@ class FuncionarioController extends Controller
     public function index()
     {
         //
-        $funcionarios = Funcionario::all();
+        $funcionarios = Funcionario::withTrashed()->get()->all();
         return view('funcionario.index', compact('funcionarios'));
     }
 
@@ -45,13 +45,15 @@ class FuncionarioController extends Controller
     public function store(Request $request)
     {
         //
-        $funcionario = new Funcionario();
-        $funcionario->nome = $request->nome;
-        $funcionario->cpf = $request->cpf;
-        $funcionario->telefone = $request->telefone;
-        $funcionario->email = $request->email;
-        $funcionario->endereco = $request->endereco;
-        $funcionario->save();
+        $rules = [
+            'nome' => 'required|string',
+            'cpf' => 'required',
+            'telefone' => 'required|numeric',
+            'email' => 'required|email',
+            'endereco' => 'required'
+        ];
+
+        $this->validate($request, $rules);
 
         $user = new User();
         $user->name = $request->nome;
@@ -60,6 +62,15 @@ class FuncionarioController extends Controller
         $user->password = bcrypt($request->cpf);
         $user->user_type = 1;
         $user->save();
+
+        $funcionario = new Funcionario();
+        $funcionario->nome = $request->nome;
+        $funcionario->cpf = $request->cpf;
+        $funcionario->telefone = $request->telefone;
+        $funcionario->email = $request->email;
+        $funcionario->endereco = $request->endereco;
+        $funcionario->usuario_id = $user->id;
+        $funcionario->save();
 
         return redirect('funcionarios');
     }
@@ -99,7 +110,17 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $rules = [
+            'nome' => 'required|string',
+            'cpf' => 'required',
+            'telefone' => 'required|numeric',
+            'email' => 'required|email',
+            'endereco' => 'required'
+        ];
+
+        $this->validate($request, $rules);
+
         $funcionario = Funcionario::findOrFail($id);
         $funcionario->nome = $request->nome;
         $funcionario->cpf = $request->cpf;
@@ -114,11 +135,17 @@ class FuncionarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Funcionario  $funcionario
+     * @param  \App\Funcionario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Funcionario $funcionario)
+    public function destroy($id)
     {
         //
+        $usuarioFuncionario = Funcionario::findOrFail($id);
+        Funcionario::findOrFail($id)->delete();
+        User::where('id', $usuarioFuncionario->usuario_id)->delete();
+
+
+        return redirect('funcionarios');
     }
 }

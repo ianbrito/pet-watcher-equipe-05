@@ -43,11 +43,16 @@
                                 </form>
                             </td>
                             <td>
+                                @if(!$funcionario->deleted_at)
                                 <form action="{{ action('FuncionarioController@destroy', $funcionario->id) }}" method="post" onsubmit="return confirm('Você deseja deletar este registro (&quot;{{ $funcionario->nome }}&quot;) do sistema?')">
                                     @csrf
                                     {{ method_field('delete') }}
-                                    <input class="button-table-delete" type="submit" value="Apagar">
+                                    <input class="button-table-delete" type="submit" value="DESATIVAR">
                                 </form>
+                                @else
+                                <p>Funcionario desativado</p>
+
+                                @endif
                             </td>
                         </tr>
                         @endforeach

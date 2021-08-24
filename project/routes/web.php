@@ -53,7 +53,7 @@ Route::get('funcionario', 'FuncionarioController@create')->middleware('role:2');
 
 Route::post('funcionario', 'FuncionarioController@store')->middleware('role:2');
 
-Route::delete('funcionario', 'FuncionarioController@destroy')->middleware('role:2');
+Route::delete('funcionario/funcionario_{id}', 'FuncionarioController@destroy')->middleware('role:2');
 
 Route::get('funcionario/{id}', 'FuncionarioController@show')->middleware('role:2');
 
