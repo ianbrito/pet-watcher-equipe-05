@@ -17,11 +17,11 @@
     <div class="container-home100">
         <div class="wrap-home100">
             @if($errors->all())
-                @foreach($errors->all() as $error)
-                    <div>
-                        {{$error}}
-                    </div>
-                @endforeach
+            @foreach($errors->all() as $error)
+            <div>
+                {{$error}}
+            </div>
+            @endforeach
             @endif
             <div class="welcome-text">
                 <h3>
@@ -37,14 +37,29 @@
                     Data: {{ date('d/m/Y') }}
                 </p>
             </div>
-                <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
-                <div class="action-pic container-login100-form-btn">
-                    <a class="button-action-home" href="#">
-                        Gerenciamento de Animais
-                    </a>
-                </div>
+            <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
+            <div class="action-pic container-login100-form-btn">
+                <a class="button-action-home" href="#">
+                    Gerenciamento de Animais
+                </a>
+            </div>
+            <div class="action-pic container-login100-form-btn">
+                <a class="button-action-home" href="{{action('LicencaController@index')}}">
+                    Gerenciamento de Licenças
+                </a>
+            </div>
+            <div class="action-pic container-login100-form-btn">
+                <a class="button-action-home" href="/funcionarios">
+                    Gerenciamento de Funcionários
+                </a>
+            </div>
+            <div class="action-pic container-login100-form-btn">
+                <a class="button-action-home" href="/proprietario">
+                    Gerenciamento de Proprietarios
+                </a>
             </div>
         </div>
     </div>
+</div>
 </div>
 @endsection
