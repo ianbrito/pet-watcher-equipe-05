@@ -45,7 +45,7 @@ class ProprietarioController extends Controller
         $proprietario->email = $form->email;
         $proprietario->endereco = $form->endereco;
         $proprietario->save();
-        return redirect('');
+        return redirect('proprietario');
     }
 
     /**
