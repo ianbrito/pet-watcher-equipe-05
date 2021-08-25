@@ -32,7 +32,7 @@
         public function edit()
         {
             //$user = User::findOrFail($id);
-            return view('change_password');
+            return view('auth.change_password');
         }
 
         public function update(Request $request)
@@ -46,7 +46,7 @@
                 if ($request->senha_atual == $request->senha_nova) {
                     $message = 'A nova senha não pode ser igual a senha atual';
                     $message_type = 'alert-warning';
-                    return view('change_password', compact('message', 'message_type'));
+                    return view('auth.change_password', compact('message', 'message_type'));
                 } else {
                     $user->password = bcrypt($request->senha_nova);
                     $user->save();
@@ -66,9 +66,9 @@
                     }
                 }
             } else {
-                $message = 'A senha atual incorreta';
+                $message = 'A senha atual está incorreta.';
                 $message_type = 'alert-danger';
-                return view('change_password', compact('message', 'message_type'));
+                return view('auth.change_password', compact('message', 'message_type'));
             }
         }
     }
