@@ -3,16 +3,20 @@
 @section('title', 'Login')
 
 @section('content')
+        @if($errors->all())
+            <div class="container-md" style="margin-top:20px;">
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible row-md" role="alert" id="liveAlert">
+                        <strong>Erro!</strong> {{$error}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
     <div class="limiter-login">
         <div class="container-login100">
             <div class="wrap-login100">
-                <div>
-                    @if($errors->all())
-                        @foreach ($errors->all() as $error)
-                            {{$error}}
-                        @endforeach
-                    @endif
-                </div>
                 <div class="login100-pic js-tilt" data-tilt>
                     <img src="/img/pet_watcher_logo.png" style="border: solid 1px #ffffff; border-radius: 30px;"
                          alt="IMG">
