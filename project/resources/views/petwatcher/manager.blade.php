@@ -37,24 +37,10 @@
                         Data: {{ date('d/m/Y') }}
                     </p>
                 </div>
-                <div class="action-pic container-login100-form-btn">
-                        <a class="button-action-home" href="{{ action('EspecieController@index') }}">
-                            Gerenciamento de Espécies
-                        </a>
-                    </div>
-                    <div class="action-pic container-login100-form-btn">
-                        <a class="button-action-home" href="{{action('CredenciadaController@index')}}">
-                            Gerenciamento de Credenciadas
-                        </a>
-                    </div>
+                    <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
                     <div class="action-pic container-login100-form-btn">
                         <a class="button-action-home" href="#">
                             Gerenciamento de Animais
-                        </a>
-                    </div>
-                    <div class="action-pic container-login100-form-btn">
-                        <a class="button-action-home" href="{{action('LicencaController@index')}}">
-                            Gerenciamento de Licenças
                         </a>
                     </div>
                     <div class="action-pic container-login100-form-btn">

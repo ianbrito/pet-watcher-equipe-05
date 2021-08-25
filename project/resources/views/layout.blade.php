@@ -50,24 +50,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                     @if(
                         auth()->check() &&
                         \Illuminate\Support\Facades\Auth::user()->user_type == 3 &&
-                        request()->is('especie*') ||
+                        (request()->is('especie*') ||
                         request()->is('credenciada*') ||
-                        request()->is('licenca*')
+                        request()->is('licenca*') ||
+                        request()->is('funcionarios*'))
                         )
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                href="{{ action('PetWatcherController@dashboard') }}">Início</a>
                         </li>
-
+                        <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="#">Animais</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                href="{{ action('EspecieController@index') }}">Espécies</a>
                         </li>
-
 
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
@@ -77,6 +80,48 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                href="{{action('LicencaController@index')}}">Licenças</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{action('FuncionarioController@index')}}">Funcionários</a>
+                        </li>
+                    @endif
+                    @if (auth()->check() &&
+                        \Illuminate\Support\Facades\Auth::user()->user_type == 2 && (
+                        request()->is('especie*') ||
+                        request()->is('credenciada*') ||
+                        request()->is('licenca*') ||
+                        request()->is('funcionarios*'))
+                        )
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ action('PetWatcherController@dashboard') }}">Início</a>
+                        </li>
+                        <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="#">Animais</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ action('FuncionarioController@index') }}">Funcionários</a>
+                        </li>
+                    @endif
+                    @if(auth()->check() &&
+                        \Illuminate\Support\Facades\Auth::user()->user_type == 1 &&
+                        (request()->is('especie*') ||
+                        request()->is('credenciada*') ||
+                        request()->is('licenca*') ||
+                        request()->is('funcionarios*'))
+                        )
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ action('PetWatcherController@dashboard') }}">Início</a>
+                        </li>
+                        <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="#">Animais</a>
                         </li>
                     @endif
                 </ul>
