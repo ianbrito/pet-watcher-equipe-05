@@ -29,9 +29,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins&family=Open+Sans&display=swap" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/util.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href=@yield('extra_css')>
@@ -39,74 +36,73 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-md">
-        <a class="navbar-brand">
-            <img src="/img/pw_topbar_icon.png" alt="Pet Watcher Logo"
-                 width="32" height="32" class="d-inline-block align-text-top">
-             Pet Watcher
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-md">
+            <a class="navbar-brand">
+                <img src="/img/pw_topbar_icon.png" alt="Pet Watcher Logo"
+                     width="32" height="32" class="d-inline-block align-text-top">
+                 Pet Watcher
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                @if(
-                    auth()->check() &&
-                    \Illuminate\Support\Facades\Auth::user()->user_type == 3 &&
-                    request()->is('especie*') ||
-                    request()->is('credenciada*') ||
-                    request()->is('licenca*')
-                    )
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                           href="{{ action('PetWatcherController@home') }}">Início</a>
-                    </li>
+                    @if(
+                        auth()->check() &&
+                        \Illuminate\Support\Facades\Auth::user()->user_type == 3 &&
+                        request()->is('especie*') ||
+                        request()->is('credenciada*') ||
+                        request()->is('licenca*')
+                        )
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ action('PetWatcherController@dashboard') }}">Início</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                           href="{{ action('EspecieController@index') }}">Espécies</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ action('EspecieController@index') }}">Espécies</a>
+                        </li>
 
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                           href="{{action('CredenciadaController@index')}}">Credenciadas</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{action('CredenciadaController@index')}}">Credenciadas</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                           href="{{action('LicencaController@index')}}">Licenças</a>
-                    </li>
-                @endif
-            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{action('LicencaController@index')}}">Licenças</a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav" style="margin-left: auto;">
+                    @if(auth()->check())
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarWhiteDropdownMenuLink" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false" style="color: black !important;">
+                                USUÁRIO:&#32;{{\Illuminate\Support\Facades\Auth::user()->name}}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-white" aria-labelledby="navbarWhiteDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{action('UserController@edit')}}">Mudar Senha</a></li>
+                                <li><a class="dropdown-item" href="{{action('Auth\LoginController@logout')}}">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+
         </div>
+    </nav>
 
-        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-            <ul class="navbar-nav" style="margin-left: auto;">
-                @if(auth()->check())
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarWhiteDropdownMenuLink" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false" style="color: black !important;">
-                            USUÁRIO:&#32;{{\Illuminate\Support\Facades\Auth::user()->name}}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-white" aria-labelledby="navbarWhiteDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{action('UserController@edit')}}">Mudar Senha</a></li>
-                            <li><a class="dropdown-item" href="{{action('Auth\LoginController@logout')}}">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
-        </div>
-
-    </div>
-</nav>
-
-
-@yield('content')
+    @yield('content')
 </body>
 </html>

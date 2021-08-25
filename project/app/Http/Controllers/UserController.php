@@ -10,12 +10,23 @@
     {
         //
 
-        public function index()
-        {
+        public function index() {
             if (Auth::check()){
-                return view('petwatcher.home');
+                switch (Auth::user()->user_type) {
+                    case 1:
+                        return view('petwatcher.dashboard');
+                        break;
+                    case 2:
+                        return view('petwatcher.manager');
+                        break;
+                    case 3:
+                        return view('petwatcher.admin');
+                        break;
+                }
             }
-            return view('auth.login');
+            else {
+                return view('auth.login');
+            }
         }
 
         public function edit()
@@ -41,7 +52,18 @@
                     $user->save();
                     $message = 'A senha foi atualizada com sucesso';
                     $message_type = 'alert-success';
-                    return view('petwatcher.home', compact('message', 'message_type'));
+
+                    switch (Auth::user()->user_type) {
+                        case 1:
+                            return view('petwatcher.dashboard', compact('message', 'message_type'));
+                            break;
+                        case 2:
+                            return view('petwatcher.manager', compact('message', 'message_type'));
+                            break;
+                        case 3:
+                            return view('petwatcher.admin', compact('message', 'message_type'));
+                            break;
+                    }
                 }
             } else {
                 $message = 'A senha atual incorreta';

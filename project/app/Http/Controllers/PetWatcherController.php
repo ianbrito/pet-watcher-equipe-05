@@ -12,7 +12,7 @@
     class PetWatcherController extends Controller
     {
 
-        function home()
+        function dashboard()
         {
 
             if (!Auth::check()) {
@@ -21,12 +21,12 @@
 
             switch (Auth::user()->user_type) {
                 case 1:
-                    return view('petwatcher.home');
+                    return view('petwatcher.dashboard');
                     break;
 
 
                 case 3:
-                    return view('petwatcher.home');
+                    return view('petwatcher.admin');
                     break;
                 case 2:
                     $credenciada = Credenciada::where('user_id', Auth::user()->id)->firstOrFail();
@@ -50,10 +50,10 @@
                                     if ($interval->days < 15) {
                                         Session::flash('message', 'Sua licença expira em '
                                             . $licenca_validade->format('d/m/Y') . '. ' . $interval->days . ' dia(s) restantes.');
-                                        return view('petwatcher.home');
+                                        return view('petwatcher.manager');
                                         break;
                                     } else {
-                                        return view('petwatcher.home');
+                                        return view('petwatcher.manager');
                                         break;
                                     }
                                 }

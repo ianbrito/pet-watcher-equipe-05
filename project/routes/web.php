@@ -31,7 +31,7 @@ Route::post('licenca/create', 'LicencaController@store')->middleware('role:3');
 
 Route::get('/', 'UserController@index');
 
-Route::get('home', 'PetWatcherController@home');
+Route::get('dashboard', 'PetWatcherController@dashboard');
 
 Route::get('especie', 'EspecieController@index')->middleware('role:3');
 

@@ -1,7 +1,7 @@
 @extends('layout')
 @section('extra_css', '/css/table.css')
 
-@section('title', 'Início')
+@section('title', 'Dashboard')
 
 @section('content')
 <div class="limiter-home">
@@ -17,11 +17,11 @@
     <div class="container-home100">
         <div class="wrap-home100">
             @if($errors->all())
-            @foreach($errors->all() as $error)
-            <div>
-                {{$error}}
-            </div>
-            @endforeach
+                @foreach($errors->all() as $error)
+                    <div>
+                        {{$error}}
+                    </div>
+                @endforeach
             @endif
             <div class="welcome-text">
                 <h3>
@@ -32,12 +32,11 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;
                     Data: {{ date('d/m/Y') }}
                 </p>
             </div>
-            <div class="wrap-input100 validate-input">
                 <div class="action-pic container-login100-form-btn">
                     <a class="button-action-home" href="{{ action('EspecieController@index') }}">
                         Gerenciamento de Espécies
