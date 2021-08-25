@@ -81,10 +81,6 @@
                             <a class="nav-link active" aria-current="page"
                                href="{{action('LicencaController@index')}}">Licenças</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                               href="{{action('FuncionarioController@index')}}">Funcionários</a>
-                        </li>
                     @endif
                     @if (auth()->check() &&
                         \Illuminate\Support\Facades\Auth::user()->user_type == 2 && (

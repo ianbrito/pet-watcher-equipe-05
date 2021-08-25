@@ -15,11 +15,19 @@
             </div>
 
             <div class="container-login100-form-btn">
-                <h4><b>Nome da Funcionario: </b>{{ $funcionario->nome }}</h4>
-                <h4><b>Cpf do Funcionario: </b>{{ $funcionario->cpf }}</h4>
-                <h4><b>Telefone do Funcionario: </b>{{ $funcionario->telefone }}</h4>
-                <h4><b>Email do Funcionario: </b>{{ $funcionario->email }}</h4>
-                <h4><b>Endereço do Funcionario: </b>{{ $funcionario->endereco }}</h4>
+                <h4><b>Nome: </b>{{ $funcionario->nome }}</h4>
+            </div>
+            <div class="container-login100-form-btn">
+                <h4><b>CPF: </b>{{ $funcionario->cpf }}</h4>
+            </div>
+            <div class="container-login100-form-btn">
+                <h4><b>Telefone: </b>{{ $funcionario->telefone }}</h4>
+            </div>
+            <div class="container-login100-form-btn">
+                <h4><b>E-mail: </b>{{ $funcionario->email }}</h4>
+            </div>
+            <div class="container-login100-form-btn">
+                <h4><b>Endereço: </b>{{ $funcionario->endereco }}</h4>
             </div>
 
             <div class="container-login100-form-btn">

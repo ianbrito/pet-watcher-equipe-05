@@ -58,11 +58,6 @@
                             Gerenciamento de Licenças
                         </a>
                     </div>
-                    <div class="action-pic container-login100-form-btn">
-                        <a class="button-action-home" href="/funcionarios">
-                            Gerenciamento de Funcionários
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>

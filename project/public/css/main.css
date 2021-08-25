@@ -256,7 +256,7 @@ iframe{
 
 .wrap-login100{
     width:960px;
-    background:#fff;
+    background: rgba(255, 255, 255, 0.95);
     border-radius:15px;
     overflow:hidden;
     display:-webkit-box;
@@ -286,7 +286,7 @@ iframe{
 
 .wrap-new-entry100 {
     width:800px;
-    background:#fff;
+    background: rgba(255, 255, 255, 0.95);
     border-radius:20px;
     overflow:hidden;
     display:-webkit-box;
@@ -301,7 +301,7 @@ iframe{
 
 .wrap-new-entry-lic {
     width:800px;
-    background:#fff;
+    background: rgba(255, 255, 255, 0.95);
     border-radius:20px;
     overflow:hidden;
     display:-webkit-box;
@@ -316,7 +316,7 @@ iframe{
 
 .wrap-new-entry-lic2 {
     width:800px;
-    background:#fff;
+    background: rgba(255, 255, 255, 0.95);
     border-radius:20px;
     overflow:hidden;
     display: inline-flex;
@@ -327,7 +327,7 @@ iframe{
 
 .wrap-view100 {
     width:800px;
-    background:#fff;
+    background: rgba(255, 255, 255, 0.95);
     border-radius:20px;
     overflow:hidden;
     display:-webkit-box;
