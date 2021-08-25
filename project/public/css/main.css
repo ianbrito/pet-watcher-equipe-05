@@ -7,11 +7,7 @@
 body,html{
     height:100%;
     font-family:Poppins,sans-serif;
-    background:#9053c7;
-    background:-webkit-linear-gradient(-135deg,#c850c0,#4158d0);
-    background:-o-linear-gradient(-135deg,#c850c0,#4158d0);
-    background:-moz-linear-gradient(-135deg,#c850c0,#4158d0);
-    background:linear-gradient(-135deg,#c850c0,#4158d0)
+    background-image: url("/img/bg.jpg");
 }
 
 a{
@@ -208,7 +204,6 @@ iframe{
     display:flex;
     justify-content:center;
     align-items:center;
-    margin-top: 50px;
     padding:15px;
 }
 
@@ -276,7 +271,7 @@ iframe{
 
 .wrap-home100 {
     width:960px;
-    background:#fff;
+    background: rgba(255, 255, 255, 0.95);
     border-radius:20px;
     overflow:hidden;
     display:-webkit-box;
