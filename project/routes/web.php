@@ -43,9 +43,9 @@ Route::put('especie/especie_{id}', 'EspecieController@update');
 Route::delete('especie/especie_{id}', 'EspecieController@destroy');
 
 // Funcionarios
-Route::get('funcionarios', 'FuncionarioController@index')->middleware('role:2');
-Route::get('funcionario', 'FuncionarioController@create')->middleware('role:2');
-Route::post('funcionario', 'FuncionarioController@store')->middleware('role:2');
+Route::get('funcionario', 'FuncionarioController@index')->middleware('role:2');
+Route::get('funcionario/create', 'FuncionarioController@create')->middleware('role:2');
+Route::post('funcionario/store', 'FuncionarioController@store')->middleware('role:2');
 Route::delete('funcionario/funcionario_{id}', 'FuncionarioController@destroy')->middleware('role:2');
 Route::get('funcionario/{id}', 'FuncionarioController@show')->middleware('role:2');
 Route::get('funcionario/{id}/edit', 'FuncionarioController@edit')->middleware('role:2');

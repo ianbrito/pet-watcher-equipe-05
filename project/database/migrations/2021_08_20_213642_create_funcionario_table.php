@@ -22,6 +22,8 @@ class CreateFuncionarioTable extends Migration
             $table->string('endereco');
             $table->integer('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('users');
+            $table->integer('credenciada_id')->unsigned();
+            $table->foreign('credenciada_id')->references('id')->on('credenciadas');
             $table->softDeletes();
             $table->timestamps();
         });

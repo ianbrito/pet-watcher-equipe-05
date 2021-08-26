@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Funcionario;
 use App\User;
+use App\Credenciada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FuncionarioController extends Controller
 {
@@ -18,10 +20,10 @@ class FuncionarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $funcionarios = Funcionario::withTrashed()->get()->all();
+        $credenciada = Auth::id();
+        $funcionarios = Funcionario::where('credenciada_id', $credenciada)->get();
         return view('funcionario.index', compact('funcionarios'));
     }
 
@@ -44,7 +46,7 @@ class FuncionarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         $rules = [
             'nome' => 'required|string',
             'cpf' => 'required',
@@ -54,6 +56,8 @@ class FuncionarioController extends Controller
         ];
 
         $this->validate($request, $rules);
+
+
 
         $user = new User();
         $user->name = $request->nome;
@@ -70,9 +74,10 @@ class FuncionarioController extends Controller
         $funcionario->email = $request->email;
         $funcionario->endereco = $request->endereco;
         $funcionario->usuario_id = $user->id;
+        $funcionario->credenciada_id = Auth::id();
         $funcionario->save();
 
-        return redirect('funcionarios');
+        return redirect('funcionario');
     }
 
     /**
@@ -113,7 +118,7 @@ class FuncionarioController extends Controller
 
         $rules = [
             'nome' => 'required|string',
-            'cpf' => 'required',
+            'cpf' => 'required|cpf',
             'telefone' => 'required|numeric',
             'email' => 'required|email',
             'endereco' => 'required'
