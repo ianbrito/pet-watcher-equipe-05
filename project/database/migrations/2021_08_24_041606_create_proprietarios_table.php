@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFuncionarioTable extends Migration
+class CreateProprietariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateFuncionarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('funcionario', function (Blueprint $table) {
+        Schema::create('proprietarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('cpf');
+            $table->string('identificador');
+            $table->string('tipo_pessoa');
             $table->string('nome');
             $table->string('telefone');
             $table->string('email');
             $table->string('endereco');
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('users');
-            $table->integer('credenciada_id')->unsigned();
-            $table->foreign('credenciada_id')->references('id')->on('credenciadas');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -36,6 +32,6 @@ class CreateFuncionarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('funcionario');
+        Schema::dropIfExists('proprietarios');
     }
 }

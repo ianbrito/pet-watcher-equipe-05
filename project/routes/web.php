@@ -33,30 +33,30 @@ Route::get('/', 'UserController@index');
 
 Route::get('dashboard', 'PetWatcherController@dashboard');
 
+// Especie
 Route::get('especie', 'EspecieController@index')->middleware('role:3');
-
 Route::get('especie/especie_{id}', 'EspecieController@show');
-
 Route::get('especie/create', 'EspecieController@create');
-
 Route::post('especie/store', 'EspecieController@store');
-
 Route::get('especie/especie_{id}/edit', 'EspecieController@edit');
-
 Route::put('especie/especie_{id}', 'EspecieController@update');
-
 Route::delete('especie/especie_{id}', 'EspecieController@destroy');
 
-Route::get('funcionarios', 'FuncionarioController@index')->middleware('role:2');
-
-Route::get('funcionario', 'FuncionarioController@create')->middleware('role:2');
-
-Route::post('funcionario', 'FuncionarioController@store')->middleware('role:2');
-
-Route::delete('funcionario', 'FuncionarioController@destroy')->middleware('role:2');
-
+// Funcionarios
+Route::get('funcionario', 'FuncionarioController@index')->middleware('role:2');
+Route::get('funcionario/create', 'FuncionarioController@create')->middleware('role:2');
+Route::post('funcionario/store', 'FuncionarioController@store')->middleware('role:2');
+Route::delete('funcionario/funcionario_{id}', 'FuncionarioController@destroy')->middleware('role:2');
 Route::get('funcionario/{id}', 'FuncionarioController@show')->middleware('role:2');
-
 Route::get('funcionario/{id}/edit', 'FuncionarioController@edit')->middleware('role:2');
-
 Route::put('funcionario/{id}/update', 'FuncionarioController@update')->middleware('role:2');
+
+
+// Priprietario
+Route::get('proprietario', 'ProprietarioController@index');
+Route::get('proprietario/create', 'ProprietarioController@create');
+Route::post('proprietario/store', 'ProprietarioController@store');
+Route::get('/proprietario/{id}/info', 'ProprietarioController@show');
+Route::get('proprietario/edit/{id}', 'ProprietarioController@edit');
+Route::put('proprietario/{id}', 'ProprietarioController@update');
+Route::delete('proprietario/proprietario_{id}', 'ProprietarioController@destroy');
