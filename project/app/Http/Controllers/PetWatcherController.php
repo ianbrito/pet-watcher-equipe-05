@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Credenciada;
+    use App\Funcionario;
     use App\Licenca;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Config;
@@ -21,13 +22,16 @@
 
             switch (Auth::user()->user_type) {
                 case 1:
+                    if (Funcionario::where()->exists()){
+
+                    }
                     return view('petwatcher.dashboard');
                     break;
-
 
                 case 3:
                     return view('petwatcher.admin');
                     break;
+
                 case 2:
                     $credenciada = Credenciada::where('user_id', Auth::user()->id)->firstOrFail();
                     if (!empty($credenciada)) {
