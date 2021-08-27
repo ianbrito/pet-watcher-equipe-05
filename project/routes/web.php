@@ -33,7 +33,7 @@ Route::get('/', 'UserController@index');
 
 Route::get('dashboard', 'PetWatcherController@dashboard');
 
-// Especie
+// Espécie
 Route::get('especie', 'EspecieController@index')->middleware('role:3');
 Route::get('especie/especie_{id}', 'EspecieController@show');
 Route::get('especie/create', 'EspecieController@create');
@@ -52,7 +52,7 @@ Route::get('funcionario/{id}/edit', 'FuncionarioController@edit')->middleware('r
 Route::put('funcionario/{id}/update', 'FuncionarioController@update')->middleware('role:2');
 
 
-// Priprietario
+// Proprietario
 Route::get('proprietario', 'ProprietarioController@index');
 Route::get('proprietario/create', 'ProprietarioController@create');
 Route::post('proprietario/store', 'ProprietarioController@store');

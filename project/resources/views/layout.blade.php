@@ -62,10 +62,9 @@
                             <a class="nav-link active" aria-current="page"
                                href="{{ action('PetWatcherController@dashboard') }}">Início</a>
                         </li>
-                        <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
-                               href="#">Animais</a>
+                               href="{{ action('AnimalController@index') }}">Animais</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
@@ -93,10 +92,9 @@
                             <a class="nav-link active" aria-current="page"
                                href="{{ action('PetWatcherController@dashboard') }}">Início</a>
                         </li>
-                        <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
-                               href="#">Animais</a>
+                               href="{{ action('AnimalController@index') }}">Animais</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
@@ -114,10 +112,9 @@
                             <a class="nav-link active" aria-current="page"
                                href="{{ action('PetWatcherController@dashboard') }}">Início</a>
                         </li>
-                        <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
-                               href="#">Animais</a>
+                               href="{{ action('AnimalController@index') }}">Animais</a>
                         </li>
                     @endif
                 </ul>
