@@ -145,7 +145,6 @@ class FuncionarioController extends Controller
      */
     public function destroy($id)
     {
-        //
         $usuarioFuncionario = Funcionario::findOrFail($id);
         Funcionario::findOrFail($id)->delete();
         User::where('id', $usuarioFuncionario->usuario_id)->delete();

@@ -59,4 +59,14 @@ Route::post('proprietario/store', 'ProprietarioController@store');
 Route::get('/proprietario/{id}/info', 'ProprietarioController@show');
 Route::get('proprietario/edit/{id}', 'ProprietarioController@edit');
 Route::put('proprietario/{id}', 'ProprietarioController@update');
-Route::delete('proprietario/proprietario_{id}', 'ProprietarioController@destroy');
+Route::delete('proprietario/{id}', 'ProprietarioController@destroy');
+
+
+// Animal
+Route::get('animal', 'AnimalController@index');
+Route::get('animal/create', 'AnimalController@create');
+Route::post('animal/store', 'AnimalController@store');
+Route::get('/animal/{id}/info', 'AnimalController@show');
+Route::get('animal/{id}/edit', 'AnimalController@edit');
+Route::put('animal/{id}', 'AnimalController@update');
+Route::delete('animal/{id}', 'AnimalController@destroy');
