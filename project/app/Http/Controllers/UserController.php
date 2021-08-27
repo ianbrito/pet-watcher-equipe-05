@@ -11,11 +11,12 @@
         //
 
         public function index() {
+            /**
             if (Auth::check()){
                 switch (Auth::user()->user_type) {
                     case 1:
-                        return view('petwatcher.dashboard');
-                        break;
+                        //return view('petwatcher.dashboard');
+                       // break;
                     case 2:
                         return view('petwatcher.manager');
                         break;
@@ -26,7 +27,9 @@
             }
             else {
                 return view('auth.login');
-            }
+            }**/
+
+            return view('auth.login');
         }
 
         public function edit()

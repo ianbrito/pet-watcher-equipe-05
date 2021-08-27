@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Funcionario;
 use App\User;
 use App\Credenciada;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class FuncionarioController extends Controller
 {
@@ -22,8 +25,8 @@ class FuncionarioController extends Controller
      */
     public function index(Request $request)
     {
-        $credenciada = Auth::id();
-        $funcionarios = Funcionario::where('credenciada_id', $credenciada)->get();
+        $credenciada = Credenciada::where('user_id',Auth::id())->firstOrFail();
+        $funcionarios = Funcionario::where('credenciada_id', $credenciada->id)->get();
         return view('funcionario.index', compact('funcionarios'));
     }
 
@@ -65,7 +68,7 @@ class FuncionarioController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->cpf);
         $user->user_type = 1;
-        $user->save();
+
 
         $funcionario = new Funcionario();
         $funcionario->nome = $request->nome;
@@ -73,9 +76,24 @@ class FuncionarioController extends Controller
         $funcionario->telefone = $request->telefone;
         $funcionario->email = $request->email;
         $funcionario->endereco = $request->endereco;
-        $funcionario->usuario_id = $user->id;
-        $funcionario->credenciada_id = Auth::id();
-        $funcionario->save();
+
+        $credenciada = Credenciada::where('user_id',Auth::id())->firstOrFail();
+        $funcionario->credenciada_id = $credenciada->id;
+
+        try {
+            DB::beginTransaction();
+            $user->save();
+            $user->refresh();
+
+            $funcionario->usuario_id = $user->id;
+            $funcionario->save();
+
+            DB::commit();
+
+        } catch (QueryException $exception) {
+            DB::rollBack();
+            return redirect()->back()->withInput()->withErrors('Ocorreu um erro ao salvar os dados'. $exception);
+        }
 
         return redirect('funcionario');
     }
