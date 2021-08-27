@@ -21,71 +21,96 @@
                 </div>
             @endforeach
         @endif
-
-        <form action="{{ action('CredenciadaController@update',$credenciada->id) }}" method="post">
-            @csrf
-            {{ method_field('put') }}
-            <div class="card" style="margin-top: 20px;">
-                <div class="card-body">
-                    <h2 style="margin-bottom: 20px">Editar Estabelecimento</h2>
-
-                    <div class="mb-3" style="margin-top: 20px">
-                        <label for="cnpj" class="form-label">CNPJ: </label>
-                        <input type="text" class="form-control" name="cnpj" id="cnpj" value="{{$credenciada->cnpj}}">
+    </div>
+    <div class="limiter-credential">
+        <div class="container-insert300">
+            <div class="wrap-new-entry-lic2">
+                <form action="{{ action('CredenciadaController@update',$credenciada->id) }}" method="post">
+                    @csrf
+                    {{ method_field('put') }}
+                    <span class="home100-form-title">
+                        Editar estabelecimento
+                    </span>
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="CNPJ" name="cnpj" id="cnpj" value="{{$credenciada->cnpj}}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-address-card" aria-hidden="true"></i>
+                        </span>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="inscricao_estadual" class="form-label">Inscrição Estadual: </label>
-                        <input type="text" class="form-control" name="inscricao_estadual" id="inscricao_estadual"
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="Inscrição Estadual" name="inscricao_estadual" id="inscricao_estadual"
                                value="{{$credenciada->inscricao_estadual}}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-info-circle" aria-hidden="true"></i>
+                        </span>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="razao_social" class="form-label">Razão Social: </label>
-                        <input type="text" class="form-control" name="razao_social" id="razao_social"
+                    <div class="wrap-input100" style="margin-top: 20px">
+                        <input type="text" class="form-control input100" placeholder="Razão Social" name="razao_social" id="razao_social"
                                value="{{$credenciada->razao_social}}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="telefone" class="form-label">Telefone: </label>
-                        <input type="text" class="form-control" name="telefone" id="telefone"
+
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="Telefone" name="telefone" id="telefone"
                                value="{{$credenciada->telefone}}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-phone" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail do estabelecimento: </label>
-                        <div class="input-group flex-nowrap">
-                            <span class="input-group-text" id="addon-wrapping">@</span>
-                            <input type="text" class="form-control" name="email" id="email"
-                                   value="{{$credenciada->email}}">
-                        </div>
+
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="E-mail" name="email" id="email" value="{{$credenciada->email}}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-at" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="endereco" class="form-label">endereço: </label>
-                        <input type="text" class="form-control" name="endereco" id="endereco"
+
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="E-mail" name="email" id="email" value="{{ old('email') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-at" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100">
+                        <input type="text" class="form-control input100" placeholder="Endereço" name="endereco" id="endereco"
                                value="{{$credenciada->endereco}}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="endereco" class="form-label">Status</label>
-                        <select name="active" class="form-select" aria-label="Default select example">
-                            <option selected value="{{$credenciada->active}}">@if($credenciada->active)Ativo @else
-                                    Desabilidado @endif</option>
-                            <option value="true">Ativo</option>
-                            <option value="false">Desabilidado</option>
+
+                    <div class="wrap-input100">
+                        <select class="form-control input100" name="active" aria-label="Default select example">
+                            <option disabled>Status</option>
+                            <option selected value="{{$credenciada->active}}">@if($credenciada->active)Habilitado @else
+                                    Desabilitado @endif</option>
+                            <option value="false">Desabilitado</option>
                         </select>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fas fa-exclamation" aria-hidden="true"></i>
+                        </span>
                     </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body" style="display: flex">
-                    <div class="mb-3">
-                        <a class="btn btn-primary" role="button" style="margin-right: 20px;"
+                    <div class="container-login100-form-btn">
+                        <input type="submit" class="login100-form-btn" value="Salvar Alterações">
+                        <a class="button-action-back" role="button"
                            href="{{action('CredenciadaController@index')}}">Voltar</a>
                     </div>
-                    <div class="mb-3">
-                        <input type="submit" class="btn btn-primary" value="Salvar Alterações">
-                    </div>
-                </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 
 @endsection

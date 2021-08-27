@@ -19,7 +19,7 @@
                             <th scope="row" class="column_id">ID</th>
                             <th class="column_razao">Nome do Animal</th>
                             <th class="column_tel">Especie do Animal</th>
-                            <th class="column_email">Sexo do Animal</th>
+                            <th class="column_ie">Sexo do Animal</th>
                             <th class="column-actions" colspan="3">Ações</th>
                         </tr>
                     </thead>
@@ -29,7 +29,7 @@
                             <td class="column_id"><a>{{ $animal->id }}</a></td>
                             <td class="column_razao"> {{ $animal->nome }} </td>
                             <td class="column_tel"> {{ $animal->especie }} </td>
-                            <td class="column_email"> {{ $animal->sexo }} </td>
+                            <td class="column_ie"> {{ $animal->sexo }} </td>
                             <td>
                                 <form action="{{ action('AnimalController@show', $animal->id) }}">
                                     <input class="button-table-view" type="submit" value="Ver">
@@ -45,7 +45,7 @@
                                 <form action="{{ action('AnimalController@destroy', $animal->id) }}" method="post" onsubmit="return confirm('Você deseja deletar este registro (&quot;{{ $animal->nome }}&quot;) do sistema?')">
                                     @csrf
                                     {{ method_field('delete') }}
-                                    <input class="button-table-delete" type="submit" value="DESATIVAR">
+                                    <input class="button-table-delete" type="submit" value="Excluir">
                                 </form>
                                 @else
                                 <p>Animal desativado</p>

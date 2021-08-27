@@ -56,7 +56,9 @@
                         (request()->is('especie*') ||
                         request()->is('credenciada*') ||
                         request()->is('licenca*') ||
-                        request()->is('funcionarios*'))
+                        request()->is('funcionario*') ||
+                        request()->is('animal*') ||
+                        request()->is('proprietario*'))
                         )
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
@@ -70,7 +72,6 @@
                             <a class="nav-link active" aria-current="page"
                                href="{{ action('EspecieController@index') }}">Espécies</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                href="{{action('CredenciadaController@index')}}">Credenciadas</a>
@@ -86,7 +87,9 @@
                         request()->is('especie*') ||
                         request()->is('credenciada*') ||
                         request()->is('licenca*') ||
-                        request()->is('funcionarios*'))
+                        request()->is('funcionario*') ||
+                        request()->is('animal*') ||
+                        request()->is('proprietario*'))
                         )
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
@@ -106,7 +109,9 @@
                         (request()->is('especie*') ||
                         request()->is('credenciada*') ||
                         request()->is('licenca*') ||
-                        request()->is('funcionarios*'))
+                        request()->is('funcionario*') ||
+                        request()->is('animal*') ||
+                        request()->is('proprietario*'))
                         )
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
@@ -115,6 +120,10 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page"
                                href="{{ action('AnimalController@index') }}">Animais</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ action('ProprietarioController@index') }}">Proprietários</a>
                         </li>
                     @endif
                 </ul>

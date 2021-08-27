@@ -15,25 +15,47 @@
 
 
 
-    <div class="container-md">
-        <form action="{{ action('CredenciadaController@updatePassword',$user->id) }}" method="post">
-            @csrf
-            {{ method_field('put') }}
-            <div class="card" style="margin-top: 20px;">
-                <div class="card-body">
-                    <h3>Trocar Senha de {{$credenciada->cnpj}}</h3>
-                    <div class="mb-3" style="margin-top: 20px">
-                        <label for="exampleInputPassword1" class="form-label">Senha atual</label>
-                        <input type="password" class="form-control" id="inputPassword1" name="senha_atual">
+    <div class="limiter-default">
+        <div class="container-insert200">
+            <div class="wrap-new-entry-lic">
+                <form action="{{ action('CredenciadaController@updatePassword',$user->id) }}" method="post">
+                    @csrf
+                    {{ method_field('put') }}
+                    <span class="home100-form-title">
+                        Alterar senha de {{$credenciada->cnpj}}
+                    </span>
+
+                    <div class="wrap-input100">
+                        <input type="password" class="form-control input100" id="inputPassword1" name="senha_atual" placeholder="Senha Atual">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                                <i class="fas fa-lock" aria-hidden="true"></i>
+                            </span>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword2" class="form-label">Nova senha </label>
-                        <input type="password" class="form-control" id="inputPassword1" name="senha_nova">
+                    <div class="wrap-input100">
+                        <input type="password" class="form-control input100" id="inputPassword1" name="senha_nova" placeholder="Nova Senha">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                                <i class="fas fa-key" aria-hidden="true"></i>
+                            </span>
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Alterar Senha">
-                </div>
+
+                    <div class="container-login100-form-btn">
+                        <input type="submit" class="login100-form-btn" value="Alterar senha">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <a class="button-cancel-action" href="{{ action('CredenciadaController@index') }}">Cancelar</a>
+                    </div>
+                    <div class="text-center p-t-12">
+                    </div>
+                    <div class="text-center p-t-136">
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </div>
+
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 
 @endsection
