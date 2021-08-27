@@ -47,9 +47,8 @@
                             Gerenciamento de Credenciadas
                         </a>
                     </div>
-                    <!-- TODO: direcionar para a view/controlador dos animais quando implementado. -->
                     <div class="action-pic container-login100-form-btn">
-                        <a class="button-action-home" href="#">
+                        <a class="button-action-home" href="{{ action('AnimalController@index') }}">
                             Gerenciamento de Animais
                         </a>
                     </div>

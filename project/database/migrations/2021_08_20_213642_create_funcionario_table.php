@@ -20,9 +20,9 @@ class CreateFuncionarioTable extends Migration
             $table->string('telefone');
             $table->string('email');
             $table->string('endereco');
-            $table->integer('usuario_id')->unsigned();
+            $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('users');
-            $table->integer('credenciada_id')->unsigned();
+            $table->unsignedBigInteger('credenciada_id');
             $table->foreign('credenciada_id')->references('id')->on('credenciadas');
             $table->softDeletes();
             $table->timestamps();
