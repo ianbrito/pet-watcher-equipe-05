@@ -20,7 +20,24 @@
                     Editar dados do animal
                 </span>
                 <div class="wrap-input100 validate-input">
-                    <input type="text" class="form-control input100" id="tipo_aquisicao" name="tipo_aquisicao" placeholder="Tipo Aquisição" value="{{ $animal->tipo_aquisicao }}">
+                    <!--<input type="text" class="form-control input100" id="tipo_aquisicao" name="tipo_aquisicao" placeholder="Tipo Aquisição" value="{{ $animal->tipo_aquisicao }}">-->
+                        <select class="form-control input100" id="tipo_aquisicao" name="tipo_aquisicao"
+                                placeholder="Tipo de aquisição">
+                            <option selected disabled value="{{$animal->tipo_aquisicao}}"> @if($animal->tipo_aquisicao == 1)
+                                    Criação Comercial
+                                @elseif($animal->tipo_aquisicao == 2)
+                                    Adoção
+                                @elseif($animal->tipo_aquisicao == 3)
+                                    De companhia
+                                @else
+                                    Proteção Animal
+                                @endif
+                            </option>
+                            <option value="1">Criação Comercial</option>
+                            <option value="2">Adoção</option>
+                            <option value="3">De companhia</option>
+                            <option value="4">Proteção Animal</option>
+                        </select>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fas fa-user" aria-hidden="true"></i>

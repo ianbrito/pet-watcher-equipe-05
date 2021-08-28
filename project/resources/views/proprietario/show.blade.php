@@ -13,21 +13,21 @@
             <div class="container-login100-form-btn">
                 <h4><b>ID: </b>{{ $proprietario->id }}</h4>
             </div>
+            <div class="container-login100-form-btn">
+                <h4><b>Nome: </b>{{ $proprietario->nome }}</h4>
+            </div>
+            <div class="container-login100-form-btn">
+                <h4><b>CPF/CNPJ: </b>{{ $proprietario->identificador }}</h4>
+            </div>
+            <div class="container-login100-form-btn">
+                <h4><b>Tipo: </b>{{ $proprietario->tipo_pessoa }}</h4>
+            </div>
 
             <div class="container-login100-form-btn">
-                <h4><b>Nome: </b>{{ $proprietario->cnpj }}</h4>
+                <h4><b>Telefone: </b>{{ $proprietario->telefone }}</h4>
             </div>
             <div class="container-login100-form-btn">
-                <h4><b>CPF: </b>{{ $proprietario->tipo_pessoa }}</h4>
-            </div>
-            <div class="container-login100-form-btn">
-                <h4><b>Telefone: </b>{{ $proprietario->nome }}</h4>
-            </div>
-            <div class="container-login100-form-btn">
-                <h4><b>E-mail: </b>{{ $proprietario->telefone }}</h4>
-            </div>
-            <div class="container-login100-form-btn">
-                <h4><b>Endereço: </b>{{ $proprietario->email }}</h4>
+                <h4><b>Email: </b>{{ $proprietario->email }}</h4>
             </div>
             <div class="container-login100-form-btn">
                 <h4><b>Endereço: </b>{{ $proprietario->endereco }}</h4>
