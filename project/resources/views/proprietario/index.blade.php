@@ -44,7 +44,7 @@
                                 <form action="{{ action('ProprietarioController@destroy', $proprietario->id) }}" method="post" onsubmit="return confirm('Você deseja deletar este registro (&quot;{{ $proprietario->nome }}&quot;) do sistema?')">
                                     @csrf
                                     {{ method_field('delete') }}
-                                    <input class="button-table-delete" type="submit" value="Apagar">
+                                        <input class="button-table-delete" type="submit" value="Apagar">
                                 </form>
                             </td>
                         </tr>

@@ -31,7 +31,7 @@ Route::post('licenca/create', 'LicencaController@store')->middleware('role:3');
 
 Route::get('/', 'UserController@index');
 
-Route::get('dashboard', 'PetWatcherController@dashboard');
+Route::get('dashboard', 'PetWatcherController@dashboard')->name('home');
 
 // Espécie
 Route::get('especie', 'EspecieController@index')->middleware('role:3');
@@ -63,6 +63,7 @@ Route::delete('proprietario/{id}', 'ProprietarioController@destroy');
 
 
 // Animal
+Route::put('animal/search', 'AnimalController@findAnimal');
 Route::get('animal', 'AnimalController@index');
 Route::get('animal/create', 'AnimalController@create');
 Route::post('animal/store', 'AnimalController@store');
@@ -70,3 +71,4 @@ Route::get('/animal/{id}/info', 'AnimalController@show');
 Route::get('animal/{id}/edit', 'AnimalController@edit');
 Route::put('animal/{id}', 'AnimalController@update');
 Route::delete('animal/{id}', 'AnimalController@destroy');
+Route::get('animal/buscar', 'AnimalController@buscar');

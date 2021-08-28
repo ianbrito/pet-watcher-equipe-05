@@ -29,6 +29,10 @@
                 return view('auth.login');
             }**/
 
+            if (Auth::check()){
+                return redirect('dashboard');
+            }
+
             return view('auth.login');
         }
 
@@ -40,8 +44,6 @@
 
         public function update(Request $request)
         {
-
-
             $user = User::findOrFail($request->id);
             $hash = crypt($request->senha_atual, $user->password);
 

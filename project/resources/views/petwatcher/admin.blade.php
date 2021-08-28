@@ -57,6 +57,11 @@
                             Gerenciamento de Licenças
                         </a>
                     </div>
+                    <div class="action-pic container-login100-form-btn">
+                        <a class="button-action-home" href="animal/buscar">
+                            Buscar Animal
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

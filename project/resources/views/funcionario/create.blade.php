@@ -6,9 +6,10 @@
 <div class="limiter-default">
     @if($errors->all())
     @foreach($errors->all() as $error)
-    <div>
-        {{$error}}
-    </div>
+            <div class="alert alert-danger alert-dismissible row-md" role="alert" id="liveAlert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
     @endforeach
     @endif
     <div class="container-insert200">

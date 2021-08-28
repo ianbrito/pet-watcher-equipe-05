@@ -31,7 +31,7 @@
             </div>
 
             <div class="container-login100-form-btn">
-                <form action="/funcionarios">
+                <form action="{{action('FuncionarioController@index')}}">
                     <input type="submit" class="button-table-delete" value="Retornar">
                 </form>
             </div>

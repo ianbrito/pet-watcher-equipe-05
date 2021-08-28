@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Animal;
+use App\Especie;
+use App\Funcionario;
 use Illuminate\Http\Request;
 use App\Proprietario;
 use App\Credenciada;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AnimalController extends Controller
 {
@@ -28,7 +31,9 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        return view('animal.create');
+        $especies = Especie::all();
+        $proprietario = Proprietario::all();
+        return view('animal.create',compact('especies','proprietario'));
     }
 
     /**
@@ -40,20 +45,28 @@ class AnimalController extends Controller
     public function store(Request $request)
     {
         $proprietario = Proprietario::findOrFail($request->proprietario_id);
-        $user_id = Auth::id();
-        $credenciada = Credenciada::first('id')->where('user_id', $user_id)->get();
-        $credenciada_id = $credenciada[0]->id;
-        $microship = Animal::select('microship')->where('microship', $request->microship)->get();
+        if (Auth::user()->user_type == 1){
+            $funcionario = Funcionario::where('usuario_id',Auth::user()->id)->firstOrFail();
+            $credenciada = Credenciada::findOrFail($funcionario->credenciada_id);
+        }else{
+            $credenciada = Credenciada::where('user_id',Auth::user()->id);
+        }
+
+        /*$microship = Animal::select('microship')->where('microship', $request->microship)->get();
+        dd($microship);
 
         if (!$proprietario->id || count($microship) > 0) {
             return redirect('animal');
-        }
+        }*/
+
+        if (Animal::where('microship',$request->microchip)->exists())
+            return redirect('animal');
 
         $animal = new Animal();
         $animal->tipo_aquisicao = $request->tipo_aquisicao;
         $animal->proprietario_id = $request->proprietario_id;
         $animal->nome = $request->nome;
-        $animal->microship = $request->microship;
+        $animal->microship = $request->microchip;
         $animal->especie = $request->especie;
         $animal->data_nascimento = $request->data_nascimento;
         $animal->fase = $request->fase;
@@ -62,7 +75,7 @@ class AnimalController extends Controller
         $animal->pedigree = $request->pedigree;
         $animal->codigo_pedigree = $request->codigo_pedigree;
         $animal->origem_pedigree = $request->origem_pedigree;
-        $animal->credenciada_id = $credenciada_id;
+        $animal->credenciada_id = $credenciada->id;
         $animal->save();
         return redirect('animal');
     }
@@ -104,7 +117,7 @@ class AnimalController extends Controller
         $animal->tipo_aquisicao = $request->tipo_aquisicao;
         $animal->proprietario_id = $request->proprietario_id;
         $animal->nome = $request->nome;
-        $animal->microship = $request->microship;
+        $animal->microship = $request->microchip;
         $animal->especie = $request->especie;
         $animal->data_nascimento = $request->data_nascimento;
         $animal->fase = $request->fase;
@@ -127,5 +140,26 @@ class AnimalController extends Controller
     {
         Animal::findOrFail($id)->delete();
         return redirect('animal');
+    }
+
+    public function findAnimal(Request $request){
+        if (!Animal::where('microship',$request->microchip)->exists())
+            return redirect()->back()->withInput()->withErrors('Animal não encontrado');
+
+        $animal = Animal::where('microship',$request->microchip)->firstOrFail();
+        $proprietario =  Proprietario::where('id',$animal->proprietario_id)->firstOrFail();
+        $credenciada = Credenciada::where('id',$animal->credenciada_id)->firstOrFail();
+        if (Auth::user()->user_type == 1){
+            $funcionario =  Funcionario::where('usuario_id',Auth::user()->id)->firstOrFail();
+            return view('animal.resume',compact('animal','proprietario','credenciada','funcionario'));
+        }else if (Auth::user()->user_type == 2){
+            $credenciada_auth = Credenciada::where('user_id',Auth::user()->id)->firstOrFail();
+            return view('animal.resume',compact('animal','proprietario','credenciada','credenciada_auth'));
+        }
+        return view('animal.resume',compact('animal','proprietario'));
+    }
+
+    public function buscar(){
+        return view('animal.buscar');
     }
 }

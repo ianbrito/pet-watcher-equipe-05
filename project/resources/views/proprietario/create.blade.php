@@ -26,7 +26,10 @@
                     </span>
                 </div>
                 <div class="wrap-input100 validate-input">
-                    <input type="text" class="form-control input100" name="tipo_pessoa" placeholder="Tipo pessoa">
+                    <select class="form-control input100" name="active" aria-label="Default select example">
+                        <option value="Pessoa Jurídica">Pessoa Jurídica</option>
+                        <option value="Pessoa Física">Pessoa Física</option>
+                    </select>
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fas fa-paw" aria-hidden="true"></i>

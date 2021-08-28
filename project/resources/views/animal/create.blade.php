@@ -39,7 +39,7 @@
                     </span>
                 </div>
                 <div class="wrap-input100 validate-input">
-                    <input type="text" class="form-control input100" id="nome" name="nome" placeholder="Nome">
+                    <input type="text" class="form-control input100" id="nome" name="nome" placeholder="Nome Animal">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fas fa-user" aria-hidden="true"></i>
@@ -52,9 +52,19 @@
                         <i class="fas fa-sim-card" aria-hidden="true"></i>
                     </span>
                 </div>
-                <div class="wrap-input100 validate-input">
+                <!--<div class="wrap-input100 validate-input">
                     <input type="text" class="form-control input100" id="especie" name="especie" placeholder="Espécie">
                     <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fas fa-scroll" aria-hidden="true"></i>
+                    </span>
+                </div>-->
+                <div class="wrap-input100 validate-input">
+                    <select class="form-control input100" name="active" aria-label="Default select example">
+                    @foreach($especies as $especie)
+                            <option value="{{$especie->especie}}">{{$especie->especie}}</option>
+                    @endforeach
+                    </select>
                     <span class="symbol-input100">
                         <i class="fas fa-scroll" aria-hidden="true"></i>
                     </span>

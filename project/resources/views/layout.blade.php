@@ -81,8 +81,8 @@
                             <a class="nav-link active" aria-current="page"
                                href="{{action('LicencaController@index')}}">Licenças</a>
                         </li>
-                    @endif
-                    @if (auth()->check() &&
+
+                    @elseif (auth()->check() &&
                         \Illuminate\Support\Facades\Auth::user()->user_type == 2 && (
                         request()->is('especie*') ||
                         request()->is('credenciada*') ||
@@ -103,8 +103,11 @@
                             <a class="nav-link active" aria-current="page"
                                href="{{ action('FuncionarioController@index') }}">Funcionários</a>
                         </li>
-                    @endif
-                    @if(auth()->check() &&
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ action('ProprietarioController@index') }}">Proprietários</a>
+                        </li>
+                    @elseif(auth()->check() &&
                         \Illuminate\Support\Facades\Auth::user()->user_type == 1 &&
                         (request()->is('especie*') ||
                         request()->is('credenciada*') ||
